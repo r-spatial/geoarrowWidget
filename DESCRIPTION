@@ -1,0 +1,21 @@
+Package: geoarrowWidget
+Title: Functions to Attach Geoarrow Data to a Widget
+Version: 0.0.0.9000
+Authors@R:
+    c(person(given = "Tim",
+             family = "Appelhans",
+             role = c("cre", "aut"),
+             email = "tim.appelhans@gmail.com"))
+Maintainer: Tim Appelhans <tim.appelhans@gmail.com>
+Description: Provides functions and necessary JavaScript bindings to quickly
+    transfer geospatial data from R memory to the browser for e.g. interactive 
+    visualisation.
+License: MIT + file LICENSE
+Imports:
+    htmltools,
+    htmlwidgets,
+    tools,
+    utils
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
