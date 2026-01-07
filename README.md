@@ -5,7 +5,19 @@ The aim of `geoarrowWidget` is to facilitate fast transfer of geospatial
 data between R memory and the browser using `geoarrow` memory layout. It
 provides functionality to attach `geoarrow` data to existing
 `htmlwidgets` along with the relevant JavaScript libraries to handle
-this data in the browser context.
+this data in the browser context. It does not do anything useful beyond
+the data transfer. It is up to the user/devloper to make further use of
+this data, e.g. render it somehow, using JavaScript.
+
+## Installation
+
+Not on CRAN yet, so install from github:
+
+``` r
+remotes::install_github("r-spatial/geoarrowWidget")
+```
+
+## Usage example
 
 For testing purposes, `geoarrowWidget` provides a minimal `htmlwidget`
 called `geoarrowDummyWidget`. Here’s an example of how to use it:
@@ -67,6 +79,11 @@ necessary scripts (arrow and geoarrow JS bindings) to process the data
 further in JavaScript.
 
 ![](man/figures/Screenshot%20from%202026-01-06%2012-05-15.png)
+
+<br>
+
+The general usage pattern is highlighted in [these lines of
+`geoarrowDummyWidget`](https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L17-L30)
 
 ### Acknowledgment
 
