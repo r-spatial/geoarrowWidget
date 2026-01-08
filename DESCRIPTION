@@ -16,8 +16,12 @@ Imports:
     htmlwidgets,
     tools,
     utils
+VignetteBuilder: 
+    quarto
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 URL: https://github.com/r-spatial/geoarrowWidget
 BugReports: https://github.com/r-spatial/geoarrowWidget/issues
+SystemRequirements: Quarto command line tool
+    (<https://github.com/quarto-dev/quarto-cli>).
