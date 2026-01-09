@@ -2,5 +2,5 @@
 
 ### All vignettes
 
-- [UNKNOWN
-  TITLE](https://r-spatial.github.io/geoarrowWidget/articles/use_existing_widget.md):
+- [Use geoarrowWidget with an existing
+  widget](https://r-spatial.github.io/geoarrowWidget/articles/use_existing_widget.md):

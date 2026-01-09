@@ -10,13 +10,13 @@ Source:
 [`DESCRIPTION`](https://github.com/r-spatial/geoarrowWidget/blob/master/DESCRIPTION)
 
 Appelhans T (2026). *geoarrowWidget: Functions to Attach Geoarrow Data
-to a Widget*. R package version 0.0.0.9006,
+to a Widget*. R package version 0.0.0.9007,
 <https://github.com/r-spatial/geoarrowWidget>.
 
     @Manual{,
       title = {geoarrowWidget: Functions to Attach Geoarrow Data to a Widget},
       author = {Tim Appelhans},
       year = {2026},
-      note = {R package version 0.0.0.9006},
+      note = {R package version 0.0.0.9007},
       url = {https://github.com/r-spatial/geoarrowWidget},
     }

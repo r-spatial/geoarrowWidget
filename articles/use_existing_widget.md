@@ -1,6 +1,4 @@
-# 
-
-## Using geoarrowWidget to attach data to an existing widget
+# Use geoarrowWidget with an existing widget
 
 A general usage pattern of `geoarrowWidget` is to enable attaching data
 to an existing widget and then using some JavaScript to update/extend
