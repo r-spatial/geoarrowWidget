@@ -1,8 +1,5 @@
 ---
-output: 
-  bookdown::html_vignette2:
-pkgdown:
-  as_is: true
+format: html
 vignette: >
   %\VignetteIndexEntry{Use geoarrowWidget with an existing widget}
   %\VignetteEngine{quarto::html}
@@ -64,7 +61,7 @@ path = file.path(
   , "test.arrow"
 )
 
-interleaved = FALSE
+interleaved = TRUE
 
 data_stream = nanoarrow::as_nanoarrow_array_stream(
   dat
@@ -90,6 +87,7 @@ wgt$dependencies = c(
   , geoarrowWidget:::geoarrowJSDependencies()
   , geoarrowWidget:::.dataAttachment(
     file = path
+    # url = "https://geoarrow-test.s3.eu-central-1.amazonaws.com/test_layer_interleaved.arrow"
     , name = "mydata"
   )
 )
