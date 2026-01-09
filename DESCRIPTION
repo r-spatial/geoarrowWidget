@@ -19,6 +19,7 @@ Imports:
 Suggests:
     colourvalues,
     geoarrow,
+    jsonlite,
     listviewer,
     nanoarrow,
     quarto,
