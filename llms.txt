@@ -70,14 +70,14 @@ This will create a web page with the data attached as a geoarrow object.
 In the browser console (press F12) this will look something like this
 (depending on the browser obviously, Librewolf in this case)
 
-![](reference/figures/Screenshot%20from%202026-01-06%2012-03-48.png)
+![](reference/figures/browser_console.png)
 
 The page source (press \<CTRL + u\>) will look something like this,
 where in line 11 you see the attached test.arrow file and above the
 necessary scripts (arrow and geoarrow JS bindings) to process the data
 further in JavaScript.
 
-![](reference/figures/Screenshot%20from%202026-01-06%2012-05-15.png)
+![](reference/figures/browser_source.png)
 
   
 
