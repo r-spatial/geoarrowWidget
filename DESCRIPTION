@@ -16,6 +16,13 @@ Imports:
     htmlwidgets,
     tools,
     utils
+Suggests:
+    colourvalues,
+    geoarrow,
+    listviewer,
+    nanoarrow,
+    quarto,
+    sf
 VignetteBuilder: 
     quarto
 Encoding: UTF-8
