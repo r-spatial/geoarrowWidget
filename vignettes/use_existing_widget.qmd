@@ -1,12 +1,11 @@
 ---
+title: "Use geoarrowWidget with an existing widget"
 format: html
 vignette: >
   %\VignetteIndexEntry{Use geoarrowWidget with an existing widget}
   %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
-
-## Using geoarrowWidget to attach data to an existing widget
 
 A general usage pattern of `geoarrowWidget` is to enable attaching data to an
 existing widget and then using some JavaScript to update/extend the functionality 
