@@ -78,18 +78,9 @@ libraries and the geoarrow file:
 
 ```{r}
 js = jsonlite::toJSON("")
-wgt = listviewer::jsonedit(js, elementId = "lv-example")
-
-wgt$dependencies = c(
-  wgt$dependencies
-  , geoarrowWidget:::arrowJSDependencies()
-  , geoarrowWidget:::geoarrowJSDependencies()
-  , geoarrowWidget:::.dataAttachment(
-    file = path
-    # url = "https://geoarrow-test.s3.eu-central-1.amazonaws.com/test_layer_interleaved.arrow"
-    , name = "mydata"
-  )
-)
+wgt = listviewer::jsonedit(js, elementId = "lv-example") |>
+  attachGeoarrowDependencies() |>
+  attachData(file = path, name = "mydata")
 ```
 
 Finally, we specify the JavaScript code that handles the population of the created

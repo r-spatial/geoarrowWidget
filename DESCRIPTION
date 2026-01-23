@@ -1,5 +1,5 @@
 Package: geoarrowWidget
-Title: Functions to Attach Geoarrow Data to a Widget
+Title: Attach Geoarrow Data to a Widget
 Version: 0.0.0.9008
 Authors@R:
     c(person(given = "Tim",
@@ -11,16 +11,17 @@ Description: Provides functions and necessary JavaScript bindings to quickly
     transfer geospatial data from R memory to the browser for e.g. interactive 
     visualisation.
 License: MIT + file LICENSE
+Depends: R (>= 4.1.0)
 Imports:
     htmltools,
     htmlwidgets,
+    listviewer,
     tools,
     utils
 Suggests:
     colourvalues,
     geoarrow,
     jsonlite,
-    listviewer,
     nanoarrow,
     quarto,
     sf
