@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">geoarrowWidget</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9008</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9009</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,18 +133,9 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">js</span> <span class="op">=</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://jeroen.r-universe.dev/jsonlite/reference/fromJSON.html" class="external-link">toJSON</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span></span>
-<span><span class="va">wgt</span> <span class="op">=</span> <span class="fu">listviewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/listviewer/man/jsonedit.html" class="external-link">jsonedit</a></span><span class="op">(</span><span class="va">js</span>, elementId <span class="op">=</span> <span class="st">"lv-example"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">wgt</span><span class="op">$</span><span class="va">dependencies</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>  <span class="va">wgt</span><span class="op">$</span><span class="va">dependencies</span></span>
-<span>  , <span class="fu">geoarrowWidget</span><span class="fu">:::</span><span class="fu">arrowJSDependencies</span><span class="op">(</span><span class="op">)</span></span>
-<span>  , <span class="fu">geoarrowWidget</span><span class="fu">:::</span><span class="fu">geoarrowJSDependencies</span><span class="op">(</span><span class="op">)</span></span>
-<span>  , <span class="fu">geoarrowWidget</span><span class="fu">:::</span><span class="fu">.dataAttachment</span><span class="op">(</span></span>
-<span>    file <span class="op">=</span> <span class="va">path</span></span>
-<span>    <span class="co"># url = "https://geoarrow-test.s3.eu-central-1.amazonaws.com/test_layer_interleaved.arrow"</span></span>
-<span>    , name <span class="op">=</span> <span class="st">"mydata"</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">wgt</span> <span class="op">=</span> <span class="fu">listviewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/listviewer/man/jsonedit.html" class="external-link">jsonedit</a></span><span class="op">(</span><span class="va">js</span>, elementId <span class="op">=</span> <span class="st">"lv-example"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/attachGeoarrowDependencies.html">attachGeoarrowDependencies</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/attachData.html">attachData</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">path</span>, name <span class="op">=</span> <span class="st">"mydata"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <p>Finally, we specify the JavaScript code that handles the population of the created JsonEditor in the browser with our geoarrow data and render the widget.</p>
 <div class="cell">
