@@ -40,14 +40,15 @@ that is supplied via \code{file} or \code{url}.
 \examples{
 library(listviewer)
 
-jsonedit(
+wgt = jsonedit(
   list("Just some dummy text")
   , elementId = "lv-example"
-) |>
-  attachData(
-    url = "https://geoarrow-test.s3.eu-central-1.amazonaws.com/test_layer_interleaved.arrow"
-    , name = "mydata"
-  )
+)
+attachData(
+  wgt
+  , url = "https://geoarrow-test.s3.eu-central-1.amazonaws.com/test_layer_interleaved.arrow"
+ , name = "mydata"
+)
 
 ## open the resulting page in the browser and inspect the page source, e.g.
 ## by pressing <Ctrl + u>. You should see a line like (href is shortened here):

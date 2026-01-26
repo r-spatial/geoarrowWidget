@@ -11,20 +11,15 @@ Description: Provides functions and necessary JavaScript bindings to quickly
     transfer geospatial data from R memory to the browser for e.g. interactive 
     visualisation.
 License: MIT + file LICENSE
-Depends: R (>= 4.1.0)
 Imports:
     htmltools,
     htmlwidgets,
-    listviewer,
-    tools,
-    utils
+    listviewer
 Suggests:
-    colourvalues,
     geoarrow,
-    jsonlite,
     nanoarrow,
     quarto,
-    sf
+    wk
 VignetteBuilder: 
     quarto
 Encoding: UTF-8

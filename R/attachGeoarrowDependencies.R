@@ -8,11 +8,11 @@
 #' @examples
 #' library(listviewer)
 #'
-#' jsonedit(
+#' wgt = jsonedit(
 #'   list("Just some dummy text")
 #'   , elementId = "lv-example"
-#' ) |>
-#'   attachGeoarrowDependencies()
+#' )
+#' attachGeoarrowDependencies(wgt)
 #'
 #' ## open the resulting page in the browser and inspect the page source, e.g.
 #' ## by pressing <Ctrl + u>. You should see two lines like:
