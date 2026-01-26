@@ -22,11 +22,11 @@ attachGeoarrowDependencies(x)
 ``` r
 library(listviewer)
 
-jsonedit(
+wgt = jsonedit(
   list("Just some dummy text")
   , elementId = "lv-example"
-) |>
-  attachGeoarrowDependencies()
+)
+attachGeoarrowDependencies(wgt)
 
 {"x":{"data":["Just some dummy text"],"options":{"mode":"tree","modes":["text","tree","table"]}},"evals":[],"jsHooks":[]}
 ## open the resulting page in the browser and inspect the page source, e.g.

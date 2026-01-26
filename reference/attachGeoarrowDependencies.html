@@ -9,7 +9,7 @@ to a widget created with createWidget."><!-- dependencies from examples --><scri
 
     <a class="navbar-brand me-2" href="../index.html">geoarrowWidget</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9009</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9010</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,11 +61,11 @@ to a widget created with <code><a href="https://rdrr.io/pkg/htmlwidgets/man/crea
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/timelyportfolio/listviewer" class="external-link">listviewer</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/listviewer/man/jsonedit.html" class="external-link">jsonedit</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="va">wgt</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/listviewer/man/jsonedit.html" class="external-link">jsonedit</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Just some dummy text"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  , elementId <span class="op">=</span> <span class="st">"lv-example"</span></span></span>
-<span class="r-in"><span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="fu">attachGeoarrowDependencies</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">attachGeoarrowDependencies</span><span class="op">(</span><span class="va">wgt</span><span class="op">)</span></span></span>
 <div id="lv-example" style="width:700px;height:432.632880098888px;" class="jsonedit html-widget"></div>
 <script type="application/json" data-for="lv-example">{"x":{"data":["Just some dummy text"],"options":{"mode":"tree","modes":["text","tree","table"]}},"evals":[],"jsHooks":[]}</script><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## open the resulting page in the browser and inspect the page source, e.g.</span></span></span>
