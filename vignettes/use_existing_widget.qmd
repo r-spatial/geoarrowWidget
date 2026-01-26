@@ -11,46 +11,37 @@ A general usage pattern of `geoarrowWidget` is to enable attaching data to an
 existing widget and then using some JavaScript to update/extend the functionality 
 of the existing widget.
 
-## Using {listviewer} to examine a geoarrow file
+## Using {listviewer} to examine a (geo)arrow file
 
-As an example, we will use `listviewer::jsonedit()` to examine a geoarrow file.
+As an example, we will use `listviewer::jsonedit()` to examine a (geo)arrow file.
 
 First, we create some spatial data from scratch:
 
 ```{r, message=FALSE}
 library(geoarrowWidget)
-library(sf)
-library(colourvalues)
 library(nanoarrow)
 library(geoarrow)
 library(listviewer)
+library(wk)
 
-### generate some random sf points data ========================================
-n = 1e3
+### generate some random wk points data ========================================
+n = 1e2
 dat = data.frame(
   id = 1:n
-  , x = runif(n, -160, 160)
-  , y = runif(n, -40, 40)
+  , fillColor = hcl.colors(n)
+  , radius = sample.int(15, n, replace = TRUE)
+  , geom = xy(
+    x = runif(n, -160, 160)
+    , y = runif(n, -40, 40)
+    , crs = wk_crs_projjson("EPSG:4326")
+  )
 )
-dat = st_as_sf(
-  dat
-  , coords = c("x", "y")
-  , crs = 4326
-)
-dat$fillColor = color_values(
-  rnorm(nrow(dat))
-  , alpha = sample.int(255, nrow(dat), replace = TRUE)
-)
-dat$lineColor = color_values(
-  rnorm(nrow(dat))
-  , alpha = sample.int(255, nrow(dat), replace = TRUE)
-  , palette = "inferno"
-)
-dat$radius = sample.int(15, nrow(dat), replace = TRUE)
-dat$lineWidth = sample.int(5, nrow(dat), replace = TRUE)
 ```
 
-Then, we convert to and save the data as a geoarrow file:
+Then, we convert to and save the data as a (geo)arrow file:
+
+Note, that we need to explicitly infer the geoarrow schema, so that the geometry
+is properly 
 
 ```{r}
 fl = tempfile()
@@ -68,7 +59,10 @@ data_stream = nanoarrow::as_nanoarrow_array_stream(
     dat
     , coord_type = ifelse(interleaved, "INTERLEAVED", "SEPARATE")
   )
+  , schema = nanoarrow::infer_nanoarrow_schema(dat)
 )
+
+data_stream$get_schema()
 
 nanoarrow::write_nanoarrow(data_stream, path)
 ```
@@ -77,10 +71,9 @@ Next, we create an empty listviewer widget and attach the relevant JavaScript
 libraries and the geoarrow file:
 
 ```{r}
-js = jsonlite::toJSON("")
-wgt = listviewer::jsonedit(js, elementId = "lv-example") |>
-  attachGeoarrowDependencies() |>
-  attachData(file = path, name = "mydata")
+wgt = listviewer::jsonedit(listdata = list(""), elementId = "lv-example")
+wgt = attachGeoarrowDependencies(x = wgt)
+wgt = attachData(x = wgt, file = path, name = "mydata")
 ```
 
 Finally, we specify the JavaScript code that handles the population of the created
@@ -90,41 +83,9 @@ JsonEditor in the browser with our geoarrow data and render the widget.
 js_code = htmlwidgets::JS(
   'function (el, x, data) {
 
-        // helper function to extract data from arrow table as arrays
-        // adapted from https://stackoverflow.com/a/78524270
-        
-        function extractDataFromTable(table) {
-          const result = {};
-          
-          // table.schema.fields is an Array of Field objects
-          // which hold information about the column including its name
-          
-          for(let field of table.schema.fields) {
-            // use the field name to extract the column as a Vector from the table
-          
-            const vector = table.getChild(field.name);
-            
-            if(!vector) {
-              continue;
-            }
-            
-            //convert the Vector to an Array.
-            //this gives you all the values in the column as an array
-            
-            if (vector.numChildren > 0) {
-              result[field.name] = [vector.toArray()];
-            } else {
-              result[field.name] = [vector.toJSON()];
-            }
-            
-          }
-          
-          return result;
-        }
-
         // find data attachment in document
         
-        let data_fl = document.getElementById(data.id + "-geoarrowWidget-attachment");
+        let attachment = document.getElementById(data.name + "-geoarrowWidget-attachment");
         
         // find listviewer jsonedit element in document and delete current contents
         
@@ -133,28 +94,35 @@ js_code = htmlwidgets::JS(
 
         // load data from attachment into jsonedit element identified and emptied earlier
         
-        fetch(data_fl.href)
+        fetch(attachment.href)
           .then(result => Arrow.tableFromIPC(result))
           .then(arrow_table => {
-
+          
             let newed = new JSONEditor.JSONEditor({
               target: jse, 
               props: {
-                content: { 
-                  //json: JSON.parse(arrow_table.toString())
-                  json: [
-                    Object(extractDataFromTable(arrow_table))
-                  ]
+                content: {
+                  json: JSON.parse(JSON.stringify(arrow_table))
                 }
               }
             });
             
-            //debugger;
-            //console.log(arrow_table);
+            console.log(arrow_table);
 
           });
   }'
 )
 
-htmlwidgets::onRender(wgt, js_code, data = list(id = "mydata"))
+htmlwidgets::onRender(wgt, js_code, data = list(name = "mydata"))
 ```
+
+This now nearly looks like the data is defined in JavaScript, but not quite... If 
+you open the browser console and inspect and compare the console log of the 
+`arrow_table`, you'll see that e.g. it carries the CRS metatdata which is lost
+by converting the arrow table to JSON.
+
+In this (somewhat convoluted) structure, the actual data values can be found at e.g. for the `radius` column:
+
+`batches` > `0` > `data` > `children` > `2` > `values` 
+
+Note, that the hex representation of the `filColor`s is internally converted to RGB.
