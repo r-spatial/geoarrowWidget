@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">geoarrowWidget</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9010</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9011</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -197,6 +197,8 @@
 <span><span class="st">        jse.innerHTML = null;</span></span>
 <span><span class="st"></span></span>
 <span><span class="st">        // load data from attachment into jsonedit element identified and emptied earlier</span></span>
+<span><span class="st">        // metadata parsing from here:</span></span>
+<span><span class="st">        // https://www.geeksforgeeks.org/javascript/how-to-convert-map-to-json-in-javascript/</span></span>
 <span><span class="st">        </span></span>
 <span><span class="st">        fetch(attachment.href)</span></span>
 <span><span class="st">          .then(result =&gt; Arrow.tableFromIPC(result))</span></span>
@@ -206,11 +208,14 @@
 <span><span class="st">              target: jse, </span></span>
 <span><span class="st">              props: {</span></span>
 <span><span class="st">                content: {</span></span>
-<span><span class="st">                  json: JSON.parse(JSON.stringify(arrow_table))</span></span>
+<span><span class="st">                  json: [{</span></span>
+<span><span class="st">                    "geoarrow table": JSON.parse(JSON.stringify(arrow_table)),</span></span>
+<span><span class="st">                    "geoarrow metadata": JSON.parse(JSON.stringify(Object.fromEntries(arrow_table.schema.fields[3].metadata)))</span></span>
+<span><span class="st">                  }]</span></span>
 <span><span class="st">                }</span></span>
 <span><span class="st">              }</span></span>
 <span><span class="st">            });</span></span>
-<span><span class="st">            </span></span>
+<span><span class="st">            debugger;</span></span>
 <span><span class="st">            console.log(arrow_table);</span></span>
 <span><span class="st"></span></span>
 <span><span class="st">          });</span></span>
@@ -220,13 +225,15 @@
 <span><span class="fu">htmlwidgets</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmlwidgets/man/onRender.html" class="external-link">onRender</a></span><span class="op">(</span><span class="va">wgt</span>, <span class="va">js_code</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"mydata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div class="jsonedit html-widget html-fill-item" id="lv-example" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="lv-example">{"x":{"data":[""],"options":{"mode":"tree","modes":["text","tree","table"]}},"evals":[],"jsHooks":{"render":[{"code":"function (el, x, data) {\n\n        // find data attachment in document\n        \n        let attachment = document.getElementById(data.name + \"-geoarrowWidget-attachment\");\n        \n        // find listviewer jsonedit element in document and delete current contents\n        \n        let jse = document.getElementById(\"lv-example\");\n        jse.innerHTML = null;\n\n        // load data from attachment into jsonedit element identified and emptied earlier\n        \n        fetch(attachment.href)\n          .then(result => Arrow.tableFromIPC(result))\n          .then(arrow_table => {\n          \n            let newed = new JSONEditor.JSONEditor({\n              target: jse, \n              props: {\n                content: {\n                  json: JSON.parse(JSON.stringify(arrow_table))\n                }\n              }\n            });\n            \n            console.log(arrow_table);\n\n          });\n  }","data":{"name":"mydata"}}]}}</script>
+<script type="application/json" data-for="lv-example">{"x":{"data":[""],"options":{"mode":"tree","modes":["text","tree","table"]}},"evals":[],"jsHooks":{"render":[{"code":"function (el, x, data) {\n\n        // find data attachment in document\n        \n        let attachment = document.getElementById(data.name + \"-geoarrowWidget-attachment\");\n        \n        // find listviewer jsonedit element in document and delete current contents\n        \n        let jse = document.getElementById(\"lv-example\");\n        jse.innerHTML = null;\n\n        // load data from attachment into jsonedit element identified and emptied earlier\n        // metadata parsing from here:\n        // https://www.geeksforgeeks.org/javascript/how-to-convert-map-to-json-in-javascript/\n        \n        fetch(attachment.href)\n          .then(result => Arrow.tableFromIPC(result))\n          .then(arrow_table => {\n          \n            let newed = new JSONEditor.JSONEditor({\n              target: jse, \n              props: {\n                content: {\n                  json: [{\n                    \"geoarrow table\": JSON.parse(JSON.stringify(arrow_table)),\n                    \"geoarrow metadata\": JSON.parse(JSON.stringify(Object.fromEntries(arrow_table.schema.fields[3].metadata)))\n                  }]\n                }\n              }\n            });\n            debugger;\n            console.log(arrow_table);\n\n          });\n  }","data":{"name":"mydata"}}]}}</script>
 </div>
 </div>
-<p>This now nearly looks like the data is defined in JavaScript, but not quite… If you open the browser console and inspect and compare the console log of the <code>arrow_table</code>, you’ll see that e.g. it carries the CRS metatdata which is lost by converting the arrow table to JSON.</p>
+<p>This now nearly looks like the data is defined in JavaScript, but not quite… If you open the browser console and inspect and compare the console log of the <code>arrow_table</code>, you’ll see that e.g. it carries the CRS metatdata which is lost in the <code>geoarrow table</code> in the JSONEditor. This is why we parse it separately as <code>geoarrow metadata</code>.</p>
 <p>In this (somewhat convoluted) structure, the actual data values can be found at e.g. for the <code>radius</code> column:</p>
-<p><code>batches</code> &gt; <code>0</code> &gt; <code>data</code> &gt; <code>children</code> &gt; <code>2</code> &gt; <code>values</code></p>
-<p>Note, that the hex representation of the <code>filColor</code>s is internally converted to RGB.</p>
+<p><code>[]</code> &gt; <code>0</code> &gt; <code>geoarrow table</code> &gt; <code>batches</code> &gt; <code>0</code> &gt; <code>data</code> &gt; <code>children</code> &gt; <code>2</code> &gt; <code>values</code></p>
+<p>The geometry column (child 3) has 2 children itself, so that access to the longitude coordinates is:</p>
+<p><code>[]</code> &gt; <code>0</code> &gt; <code>geoarrow table</code> &gt; <code>batches</code> &gt; <code>0</code> &gt; <code>data</code> &gt; <code>children</code> &gt; <code>3</code> &gt; <code>children</code> &gt; <code>0</code> &gt; <code>values</code></p>
+<p>Note, that the hex representation of the <code>fillColor</code> column (child 1) is internally converted to some numerical representation, which is why it has 700 values instead of just 100.</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);

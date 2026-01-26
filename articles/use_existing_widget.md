@@ -143,6 +143,8 @@ js_code = htmlwidgets::JS(
         jse.innerHTML = null;
 
         // load data from attachment into jsonedit element identified and emptied earlier
+        // metadata parsing from here:
+        // https://www.geeksforgeeks.org/javascript/how-to-convert-map-to-json-in-javascript/
         
         fetch(attachment.href)
           .then(result => Arrow.tableFromIPC(result))
@@ -152,11 +154,14 @@ js_code = htmlwidgets::JS(
               target: jse, 
               props: {
                 content: {
-                  json: JSON.parse(JSON.stringify(arrow_table))
+                  json: [{
+                    "geoarrow table": JSON.parse(JSON.stringify(arrow_table)),
+                    "geoarrow metadata": JSON.parse(JSON.stringify(Object.fromEntries(arrow_table.schema.fields[3].metadata)))
+                  }]
                 }
               }
             });
-            
+            debugger;
             console.log(arrow_table);
 
           });
@@ -169,12 +174,21 @@ htmlwidgets::onRender(wgt, js_code, data = list(name = "mydata"))
 This now nearly looks like the data is defined in JavaScript, but not
 quite… If you open the browser console and inspect and compare the
 console log of the `arrow_table`, you’ll see that e.g. it carries the
-CRS metatdata which is lost by converting the arrow table to JSON.
+CRS metatdata which is lost in the `geoarrow table` in the JSONEditor.
+This is why we parse it separately as `geoarrow metadata`.
 
 In this (somewhat convoluted) structure, the actual data values can be
 found at e.g. for the `radius` column:
 
-`batches` \> `0` \> `data` \> `children` \> `2` \> `values`
+`[]` \> `0` \> `geoarrow table` \> `batches` \> `0` \> `data` \>
+`children` \> `2` \> `values`
 
-Note, that the hex representation of the `filColor`s is internally
-converted to RGB.
+The geometry column (child 3) has 2 children itself, so that access to
+the longitude coordinates is:
+
+`[]` \> `0` \> `geoarrow table` \> `batches` \> `0` \> `data` \>
+`children` \> `3` \> `children` \> `0` \> `values`
+
+Note, that the hex representation of the `fillColor` column (child 1) is
+internally converted to some numerical representation, which is why it
+has 700 values instead of just 100.
