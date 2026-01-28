@@ -1,4 +1,9 @@
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/r-spatial/geoarrowWidget/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-spatial/geoarrowWidget/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 ## geoarrowWidget
 
 The aim of `geoarrowWidget` is to facilitate fast transfer of geospatial
