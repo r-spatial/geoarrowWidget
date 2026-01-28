@@ -1,6 +1,6 @@
-# Attach `arrow` and `geoarrow` JavaScript dependencies to a widget.
+# Attach `Arrow` and `Geoarrow` JavaScript dependencies to a widget.
 
-Pipe-friendly function to attach `arrow` and `geoarrow` JavaScript
+Pipe-friendly functions to attach `Arrow` and `Geoarrow` JavaScript
 dependencies to a widget created with
 [`createWidget`](https://rdrr.io/pkg/htmlwidgets/man/createWidget.html).
 
@@ -8,6 +8,10 @@ dependencies to a widget created with
 
 ``` r
 attachGeoarrowDependencies(x)
+
+attachGeoarrowDependency(x)
+
+attachArrowDependency(x)
 ```
 
 ## Arguments

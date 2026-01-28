@@ -18,6 +18,7 @@ library(nanoarrow)
 library(geoarrow)
 library(listviewer)
 library(wk)
+library(htmlwidgets)
 
 ### generate some random wk points data ========================================
 n = 1e2
@@ -35,8 +36,9 @@ dat = data.frame(
 
 Then, we convert to and save the data as a (geo)arrow file:
 
-Note, that we need to explicitly infer the geoarrow schema, so that the
-geometry is properly
+Note, we need to explicitly infer the geoarrow schema, so that the
+geometry is properly handled, especially the geometry encoding and the
+crs.
 
 ``` r
 fl = tempfile()
@@ -48,13 +50,13 @@ path = file.path(
 
 interleaved = TRUE
 
-data_stream = nanoarrow::as_nanoarrow_array_stream(
+data_stream = as_nanoarrow_array_stream(
   dat
-  , geometry_schema = geoarrow::infer_geoarrow_schema(
+  , geometry_schema = infer_geoarrow_schema(
     dat
     , coord_type = ifelse(interleaved, "INTERLEAVED", "SEPARATE")
   )
-  , schema = nanoarrow::infer_nanoarrow_schema(dat)
+  , schema = infer_nanoarrow_schema(dat)
 )
 
 data_stream$get_schema()
@@ -113,14 +115,16 @@ data_stream$get_schema()
      $ dictionary: NULL
 
 ``` r
-nanoarrow::write_nanoarrow(data_stream, path)
+write_nanoarrow(data_stream, path)
 ```
 
 Next, we create an empty listviewer widget and attach the relevant
-JavaScript libraries and the geoarrow file:
+JavaScript libraries and the geoarrow file. We explicitly name the
+widget via the `elementId` so that we can find the widget in the
+document and subsequently modify it.
 
 ``` r
-wgt = listviewer::jsonedit(listdata = list(""), elementId = "lv-example")
+wgt = jsonedit(listdata = list(""), elementId = "lv-example")
 wgt = attachGeoarrowDependencies(x = wgt)
 wgt = attachData(x = wgt, file = path, name = "mydata")
 ```
@@ -168,7 +172,7 @@ js_code = htmlwidgets::JS(
   }'
 )
 
-htmlwidgets::onRender(wgt, js_code, data = list(name = "mydata"))
+onRender(wgt, js_code, data = list(name = "mydata"))
 ```
 
 This now nearly looks like the data is defined in JavaScript, but not

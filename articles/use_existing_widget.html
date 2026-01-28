@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">geoarrowWidget</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9011</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9012</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,6 +81,7 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://geoarrow.org/geoarrow-r/" class="external-link">geoarrow</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/timelyportfolio/listviewer" class="external-link">listviewer</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://paleolimbot.github.io/wk/" class="external-link">wk</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ramnathv/htmlwidgets" class="external-link">htmlwidgets</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">### generate some random wk points data ========================================</span></span>
 <span><span class="va">n</span> <span class="op">=</span> <span class="fl">1e2</span></span>
@@ -96,7 +97,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 </div>
 <p>Then, we convert to and save the data as a (geo)arrow file:</p>
-<p>Note, that we need to explicitly infer the geoarrow schema, so that the geometry is properly</p>
+<p>Note, we need to explicitly infer the geoarrow schema, so that the geometry is properly handled, especially the geometry encoding and the crs.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fl</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -108,13 +109,13 @@
 <span></span>
 <span><span class="va">interleaved</span> <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span></span>
-<span><span class="va">data_stream</span> <span class="op">=</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html" class="external-link">as_nanoarrow_array_stream</a></span><span class="op">(</span></span>
+<span><span class="va">data_stream</span> <span class="op">=</span> <span class="fu"><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html" class="external-link">as_nanoarrow_array_stream</a></span><span class="op">(</span></span>
 <span>  <span class="va">dat</span></span>
-<span>  , geometry_schema <span class="op">=</span> <span class="fu">geoarrow</span><span class="fu">::</span><span class="fu"><a href="https://geoarrow.org/geoarrow-r/reference/infer_geoarrow_schema.html" class="external-link">infer_geoarrow_schema</a></span><span class="op">(</span></span>
+<span>  , geometry_schema <span class="op">=</span> <span class="fu"><a href="https://geoarrow.org/geoarrow-r/reference/infer_geoarrow_schema.html" class="external-link">infer_geoarrow_schema</a></span><span class="op">(</span></span>
 <span>    <span class="va">dat</span></span>
 <span>    , coord_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">interleaved</span>, <span class="st">"INTERLEAVED"</span>, <span class="st">"SEPARATE"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span>  , schema <span class="op">=</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_schema.html" class="external-link">infer_nanoarrow_schema</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span>
+<span>  , schema <span class="op">=</span> <span class="fu"><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_schema.html" class="external-link">infer_nanoarrow_schema</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">data_stream</span><span class="op">$</span><span class="fu">get_schema</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -172,12 +173,12 @@
  $ dictionary: NULL</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/read_nanoarrow.html" class="external-link">write_nanoarrow</a></span><span class="op">(</span><span class="va">data_stream</span>, <span class="va">path</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/read_nanoarrow.html" class="external-link">write_nanoarrow</a></span><span class="op">(</span><span class="va">data_stream</span>, <span class="va">path</span><span class="op">)</span></span></code></pre></div>
 </div>
-<p>Next, we create an empty listviewer widget and attach the relevant JavaScript libraries and the geoarrow file:</p>
+<p>Next, we create an empty listviewer widget and attach the relevant JavaScript libraries and the geoarrow file. We explicitly name the widget via the <code>elementId</code> so that we can find the widget in the document and subsequently modify it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">wgt</span> <span class="op">=</span> <span class="fu">listviewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/listviewer/man/jsonedit.html" class="external-link">jsonedit</a></span><span class="op">(</span>listdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span>, elementId <span class="op">=</span> <span class="st">"lv-example"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">wgt</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/listviewer/man/jsonedit.html" class="external-link">jsonedit</a></span><span class="op">(</span>listdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span>, elementId <span class="op">=</span> <span class="st">"lv-example"</span><span class="op">)</span></span>
 <span><span class="va">wgt</span> <span class="op">=</span> <span class="fu"><a href="../reference/attachGeoarrowDependencies.html">attachGeoarrowDependencies</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">wgt</span><span class="op">)</span></span>
 <span><span class="va">wgt</span> <span class="op">=</span> <span class="fu"><a href="../reference/attachData.html">attachData</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">wgt</span>, file <span class="op">=</span> <span class="va">path</span>, name <span class="op">=</span> <span class="st">"mydata"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -222,7 +223,7 @@
 <span><span class="st">  }'</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">htmlwidgets</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmlwidgets/man/onRender.html" class="external-link">onRender</a></span><span class="op">(</span><span class="va">wgt</span>, <span class="va">js_code</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"mydata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/htmlwidgets/man/onRender.html" class="external-link">onRender</a></span><span class="op">(</span><span class="va">wgt</span>, <span class="va">js_code</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"mydata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div class="jsonedit html-widget html-fill-item" id="lv-example" style="width:672px;height:480px;"></div>
 <script type="application/json" data-for="lv-example">{"x":{"data":[""],"options":{"mode":"tree","modes":["text","tree","table"]}},"evals":[],"jsHooks":{"render":[{"code":"function (el, x, data) {\n\n        // find data attachment in document\n        \n        let attachment = document.getElementById(data.name + \"-geoarrowWidget-attachment\");\n        \n        // find listviewer jsonedit element in document and delete current contents\n        \n        let jse = document.getElementById(\"lv-example\");\n        jse.innerHTML = null;\n\n        // load data from attachment into jsonedit element identified and emptied earlier\n        // metadata parsing from here:\n        // https://www.geeksforgeeks.org/javascript/how-to-convert-map-to-json-in-javascript/\n        \n        fetch(attachment.href)\n          .then(result => Arrow.tableFromIPC(result))\n          .then(arrow_table => {\n          \n            let newed = new JSONEditor.JSONEditor({\n              target: jse, \n              props: {\n                content: {\n                  json: [{\n                    \"geoarrow table\": JSON.parse(JSON.stringify(arrow_table)),\n                    \"geoarrow metadata\": JSON.parse(JSON.stringify(Object.fromEntries(arrow_table.schema.fields[3].metadata)))\n                  }]\n                }\n              }\n            });\n            debugger;\n            console.log(arrow_table);\n\n          });\n  }","data":{"name":"mydata"}}]}}</script>
