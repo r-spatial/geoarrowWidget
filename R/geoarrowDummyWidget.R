@@ -68,8 +68,8 @@ geoarrowDummyWidget <- function(
 
   wgt$dependencies = c(
     wgt$dependencies
-    , arrowJSDependencies()
-    , geoarrowJSDependencies()
+    , arrowJSDependency()
+    , geoarrowJSDependency()
     , .dataAttachment(
       file = file
       , url = url

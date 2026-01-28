@@ -1,6 +1,6 @@
-#' Attach `arrow` and `geoarrow` JavaScript dependencies to a widget.
+#' Attach `Arrow` and `Geoarrow` JavaScript dependencies to a widget.
 #'
-#' Pipe-friendly function to attach `arrow` and `geoarrow` JavaScript dependencies
+#' Pipe-friendly functions to attach `Arrow` and `Geoarrow` JavaScript dependencies
 #' to a widget created with \code{\link[htmlwidgets]{createWidget}}.
 #'
 #' @param x A widget created with \code{\link[htmlwidgets]{createWidget}}.
@@ -24,13 +24,45 @@
 #'
 #' @import listviewer
 #'
+#' @rdname attachGeoarrowDependencies
+#'
 #' @export
 attachGeoarrowDependencies = function(x) {
 
   x$dependencies = c(
     x$dependencies
-    , arrowJSDependencies()
-    , geoarrowJSDependencies()
+    , arrowJSDependency()
+    , geoarrowJSDependency()
+  )
+
+  return(x)
+
+}
+
+
+#' @rdname attachGeoarrowDependencies
+#'
+#' @export
+attachGeoarrowDependency = function(x) {
+
+  x$dependencies = c(
+    x$dependencies
+    , geoarrowJSDependency()
+  )
+
+  return(x)
+
+}
+
+
+#' @rdname attachGeoarrowDependencies
+#'
+#' @export
+attachArrowDependency = function(x) {
+
+  x$dependencies = c(
+    x$dependencies
+    , arrowJSDependency()
   )
 
   return(x)
