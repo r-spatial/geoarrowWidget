@@ -74,9 +74,22 @@ wgt
 
 This will create a web page with the data attached as a geoarrow object.
 In the browser console (press F12) this will look something like this
-(depending on the browser obviously, Librewolf in this case)
+(depending on the browser obviously, Librewolf in this case). You should
+see two entries:
 
-![](man/figures/browser_console.png)
+1.  `Object` - the geoarrow data
+2.  `PerformanceResourceTiming` - details about the performance of
+    loading the data including `encodedBodySize` of the data in Bytes
+    and `duration` in milliseconds.
+
+Another way to see how long it takes to load the data is to open the
+`Network` tab in the developer tools and refresh the page.
+
+![](man/figures/browser_console.png) *Note: the 200MB `encodedBodySize`
+and 375ms `duration` in the screenshot are the result of running the
+above code with `1e7` points.*
+
+<br>
 
 The page source (press \<CTRL + u\>) will look something like this,
 where in line 11 you see the attached test.arrow file and above the
@@ -88,7 +101,7 @@ further in JavaScript.
 <br>
 
 The general usage pattern is highlighted in [these lines of
-`geoarrowDummyWidget`](https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L17-L30)
+`geoarrowDummyWidget`](https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L33-L42)
 
 ### Acknowledgment
 

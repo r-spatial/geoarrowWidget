@@ -11,11 +11,23 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        // TODO: code to render the widget, e.g.
-        el.innerText = x.message;
-
         // find data attachment
         let data_fl = document.getElementById(x.dataname + "-geoarrowWidget-attachment");
+
+        // timings to see how long it will take to fetch
+        // https://stackoverflow.com/a/66865354
+        let resourceObserver = new PerformanceObserver( (list) => {
+          list.getEntries()
+            // get only the one we're interested in
+            .filter( ({ name }) => name === data_fl.href )
+            .forEach( (resource) => {
+              console.log( resource );
+            } );
+          // Disconnect after processing the events.
+          resourceObserver.disconnect();
+        } );
+        // make it a resource observer
+        resourceObserver.observe( { type: "resource" } );
 
         // fetch and read data, then process as arrow table
         fetch(data_fl.href)
@@ -27,7 +39,9 @@ HTMLWidgets.widget({
 
             //debugger;
             console.log(arrow_table);
-          });
+          })
+
+        el.innerText = x.message;
 
       },
 
