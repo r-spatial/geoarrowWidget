@@ -23,7 +23,7 @@ Pipe-friendly function to attach data (any, really, not only \code{geoarrow}) to
 widget created with \code{\link[htmlwidgets]{createWidget}}.
 }
 \details{
-The provided data will be attached to the page created by the widget as a \if{html}{\out{<link>}}.
+The provided data will be attached to the page created by the widget as a \verb{<link>}.
 It can then be used by some script that will \code{fetch} this data from the \code{href}.
 See e.g. the \code{"Use geoarrowWidget with an existing widget"} vignette of this package
 for an example of how to work with this data using \code{\link[htmlwidgets]{onRender}}

@@ -12,7 +12,7 @@
 #'   `details` and `examples` for further explanation.
 #'
 #' @details
-#' The provided data will be attached to the page created by the widget as a <link>.
+#' The provided data will be attached to the page created by the widget as a `<link>`.
 #' It can then be used by some script that will `fetch` this data from the `href`.
 #' See e.g. the `"Use geoarrowWidget with an existing widget"` vignette of this package
 #' for an example of how to work with this data using \code{\link[htmlwidgets]{onRender}}
