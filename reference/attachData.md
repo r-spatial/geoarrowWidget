@@ -35,11 +35,12 @@ attachData(x, file, url, ...)
 ## Details
 
 The provided data will be attached to the page created by the widget as
-a . It can then be used by some script that will `fetch` this data from
-the `href`. See e.g. the `"Use geoarrowWidget with an existing widget"`
-vignette of this package for an example of how to work with this data
-using [`onRender`](https://rdrr.io/pkg/htmlwidgets/man/onRender.html) or
-the [source of
+a `<link>`. It can then be used by some script that will `fetch` this
+data from the `href`. See e.g. the
+`"Use geoarrowWidget with an existing widget"` vignette of this package
+for an example of how to work with this data using
+[`onRender`](https://rdrr.io/pkg/htmlwidgets/man/onRender.html) or the
+[source of
 geoarrowDummyWidget.js](https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L17-L30)
 for another, similar example.
 
