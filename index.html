@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">geoarrowWidget</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9017</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9018</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,12 +111,20 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>viewer <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">wgt</span></span></code></pre></div>
-<p>This will create a web page with the data attached as a geoarrow object. In the browser console (press F12) this will look something like this (depending on the browser obviously, Librewolf in this case)</p>
-<p><img src="reference/figures/browser_console.png"></p>
+<p>This will create a web page with the data attached as a geoarrow object. In the browser console (press F12) this will look something like this (depending on the browser obviously, Librewolf in this case). You should see two entries:</p>
+<ol style="list-style-type: decimal">
+<li>
+<code>Object</code> - the geoarrow data</li>
+<li>
+<code>PerformanceResourceTiming</code> - details about the performance of loading the data including <code>encodedBodySize</code> of the data in Bytes and <code>duration</code> in milliseconds.</li>
+</ol>
+<p>Another way to see how long it takes to load the data is to open the <code>Network</code> tab in the developer tools and refresh the page.</p>
+<p><img src="reference/figures/browser_console.png"><em>Note: the 200MB <code>encodedBodySize</code> and 375ms <code>duration</code> in the screenshot are the result of running the above code with <code>1e7</code> points.</em></p>
+<p><br></p>
 <p>The page source (press &lt;CTRL + u&gt;) will look something like this, where in line 11 you see the attached test.arrow file and above the necessary scripts (arrow and geoarrow JS bindings) to process the data further in JavaScript.</p>
 <p><img src="reference/figures/browser_source.png"></p>
 <p><br></p>
-<p>The general usage pattern is highlighted in <a href="https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L17-L30" class="external-link">these lines of <code>geoarrowDummyWidget</code></a></p>
+<p>The general usage pattern is highlighted in <a href="https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L33-L42" class="external-link">these lines of <code>geoarrowDummyWidget</code></a></p>
 <div class="section level3">
 <h3 id="acknowledgment">Acknowledgment<a class="anchor" aria-label="anchor" href="#acknowledgment"></a>
 </h3>
