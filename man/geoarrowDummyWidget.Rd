@@ -46,5 +46,4 @@ wgt = geoarrowDummyWidget(url = url)
 options(viewer = NULL)
 wgt
 
-
 }

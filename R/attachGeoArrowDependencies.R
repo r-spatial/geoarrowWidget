@@ -22,6 +22,17 @@
 #'
 #' ## !Version numbers of the JavaScript dependencies may differ!
 #'
+#' @tests tinytest
+#' library(listviewer)
+#'
+#' wgt = jsonedit(
+#'   list("Just some dummy text")
+#'   , elementId = "lv-example"
+#' )
+#' wgt = attachGeoarrowDependencies(wgt)
+#'
+#' expect_length(wgt$dependencies, 2)
+#'
 #' @import listviewer
 #'
 #' @rdname attachGeoarrowDependencies
@@ -40,6 +51,17 @@ attachGeoarrowDependencies = function(x) {
 }
 
 
+#' @tests tinytest
+#' library(listviewer)
+#'
+#' wgt = jsonedit(
+#'   list("Just some dummy text")
+#'   , elementId = "lv-example"
+#' )
+#' wgt = attachGeoarrowDependency(wgt)
+#'
+#' expect_length(wgt$dependencies, 1)
+#'
 #' @rdname attachGeoarrowDependencies
 #'
 #' @export
@@ -55,6 +77,17 @@ attachGeoarrowDependency = function(x) {
 }
 
 
+#' @tests tinytest
+#' library(listviewer)
+#'
+#' wgt = jsonedit(
+#'   list("Just some dummy text")
+#'   , elementId = "lv-example"
+#' )
+#' wgt = attachArrowDependency(wgt)
+#'
+#' expect_length(wgt$dependencies, 1)
+#'
 #' @rdname attachGeoarrowDependencies
 #'
 #' @export
