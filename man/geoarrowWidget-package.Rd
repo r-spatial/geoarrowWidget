@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Tim Appelhans \email{tim.appelhans@gmail.com}
+\strong{Maintainer}: Tim Appelhans \email{tim.appelhans@gmail.com} [copyright holder]
 
 }
 \keyword{internal}
