@@ -16,4 +16,5 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Tim Appelhans <tim.appelhans@gmail.com>
+**Maintainer**: Tim Appelhans <tim.appelhans@gmail.com> \[copyright
+holder\]
