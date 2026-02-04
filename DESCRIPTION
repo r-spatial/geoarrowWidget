@@ -1,10 +1,10 @@
 Package: geoarrowWidget
 Title: Attach Geoarrow Data to a Widget
-Version: 0.0.0.9020
+Version: 0.0.0.9022
 Authors@R:
     c(person(given = "Tim",
              family = "Appelhans",
-             role = c("cre", "aut"),
+             role = c("cre", "aut", "cph"),
              email = "tim.appelhans@gmail.com"))
 Maintainer: Tim Appelhans <tim.appelhans@gmail.com>
 Description: Provides functions and necessary JavaScript bindings to quickly
