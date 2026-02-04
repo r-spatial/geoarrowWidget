@@ -4,20 +4,20 @@ Version: 0.0.0.9023
 Authors@R:
     c(person(given = "Tim",
              family = "Appelhans",
-             role = c("cre", "aut", "cph"),
-             email = "tim.appelhans@gmail.com"))
+             role = c("cre", "aut"),
+             email = "tim.appelhans@gmail.com",
+             comment = c(ORCID = "0000-0002-9824-2707")))
 Maintainer: Tim Appelhans <tim.appelhans@gmail.com>
 Description: Provides functions and necessary JavaScript bindings to quickly
-    transfer geospatial data from R memory to the browser for e.g. interactive 
-    visualisation.
+    transfer geospatial data from R memory to the browser.
 License: MIT + file LICENSE
 Imports:
     htmltools,
     htmlwidgets,
-    listviewer
+    listviewer,
+    nanoarrow
 Suggests:
     geoarrow,
-    nanoarrow,
     quarto,
     tinytest,
     wk
