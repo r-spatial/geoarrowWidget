@@ -2,16 +2,24 @@
 % Please edit documentation in R/extJSLibs.R
 \name{extJSLibs}
 \alias{extJSLibs}
-\title{Print names and versions of external JavaScript libraries.}
+\title{Names and versions of external JavaScript libraries.}
 \usage{
 extJSLibs()
 }
+\value{
+A named character vector with the versions of the \code{GeoArrow} and \code{Arrow}
+JavaScript libraries shipped with this package.
+}
 \description{
-Prints names and versions of the external JavaScript libraries used in
+Names and versions of the external JavaScript libraries used in
 \code{geoarrowWidget}.
 }
 \details{
 See e.g. \url{https://cdn.jsdelivr.net/npm/apache-arrow/package.json}
 or \url{https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js/package.json} for
 more details on the js depencencies.
+}
+\examples{
+  extJSLibs()
+
 }

@@ -35,6 +35,9 @@ See \code{\link[htmlwidgets]{createWidget}} for details.}
 \item{elementId}{Use an explicit element ID for the widget.
 See \code{\link[htmlwidgets]{createWidget}} for details.}
 }
+\value{
+An \code{htmlwidget} with the parsed geoarrow data printed to the browser console.
+}
 \description{
 Widget used to highlight efficiency of geoarrow data transfer. Doesn't do anything
 useful, other than attaching data to a generated \code{htmlwidget} and printing that

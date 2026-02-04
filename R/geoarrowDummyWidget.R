@@ -18,6 +18,9 @@
 #' @param elementId Use an explicit element ID for the widget.
 #'   See \code{\link[htmlwidgets]{createWidget}} for details.
 #'
+#' @returns
+#'   An `htmlwidget` with the parsed geoarrow data printed to the browser console.
+#'
 #' @examples
 #' url = "https://geoarrow-test.s3.eu-central-1.amazonaws.com/test_layer_interleaved.arrow"
 #' wgt = geoarrowDummyWidget(url = url)

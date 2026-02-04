@@ -6,7 +6,7 @@
 \alias{geoarrowWidget-package}
 \title{geoarrowWidget: Attach Geoarrow Data to a Widget}
 \description{
-Provides functions and necessary JavaScript bindings to quickly transfer geospatial data from R memory to the browser for e.g. interactive visualisation.
+Provides functions and necessary JavaScript bindings to quickly transfer geospatial data from R memory to the browser.
 }
 \seealso{
 Useful links:
@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Tim Appelhans \email{tim.appelhans@gmail.com} [copyright holder]
+\strong{Maintainer}: Tim Appelhans \email{tim.appelhans@gmail.com} (\href{https://orcid.org/0000-0002-9824-2707}{ORCID})
 
 }
 \keyword{internal}
