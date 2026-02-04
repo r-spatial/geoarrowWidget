@@ -74,8 +74,8 @@ so that we can find the widget in the document and subsequently modify it.
 
 ```{r}
 wgt = jsonedit(listdata = list(""), elementId = "lv-example")
-wgt = attachGeoarrowDependencies(x = wgt)
-wgt = attachData(x = wgt, file = path, name = "mydata")
+wgt = attachGeoarrowDependencies(widget = wgt)
+wgt = attachData(widget = wgt, file = path, name = "mydata")
 ```
 
 Finally, we specify the JavaScript code that handles the population of the created
@@ -113,7 +113,7 @@ js_code = htmlwidgets::JS(
                 }
               }
             });
-            debugger;
+            //debugger;
             console.log(arrow_table);
 
           });
