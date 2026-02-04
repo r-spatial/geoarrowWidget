@@ -75,7 +75,7 @@
 #'   hasName(wgt$dependencies[[1]]$attachment, "geoarrowWidget")
 #' )
 #'
-#' @import  listviewer
+#' @import listviewer
 #'
 #' @export
 attachData <- function(

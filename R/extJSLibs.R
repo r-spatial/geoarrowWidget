@@ -16,12 +16,12 @@ extJSLibs = function() {
 
   structure(
     c(
-      geoarrowJSDependency()[[1]]$version
-      , arrowJSDependency()[[1]]$version
+      .geoarrowJSDependency()[[1]]$version
+      , .arrowJSDependency()[[1]]$version
     )
     , names = c(
-      geoarrowJSDependency()[[1]]$name
-      , arrowJSDependency()[[1]]$name
+      .geoarrowJSDependency()[[1]]$name
+      , .arrowJSDependency()[[1]]$name
     )
   )
 

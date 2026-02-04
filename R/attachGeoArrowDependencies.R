@@ -42,8 +42,8 @@ attachGeoarrowDependencies = function(x) {
 
   x$dependencies = c(
     x$dependencies
-    , arrowJSDependency()
-    , geoarrowJSDependency()
+    , .arrowJSDependency()
+    , .geoarrowJSDependency()
   )
 
   return(x)
@@ -69,7 +69,7 @@ attachGeoarrowDependency = function(x) {
 
   x$dependencies = c(
     x$dependencies
-    , geoarrowJSDependency()
+    , .geoarrowJSDependency()
   )
 
   return(x)
@@ -95,7 +95,7 @@ attachArrowDependency = function(x) {
 
   x$dependencies = c(
     x$dependencies
-    , arrowJSDependency()
+    , .arrowJSDependency()
   )
 
   return(x)

@@ -1,5 +1,5 @@
 ## arrow js ====================================================================
-arrowJSDependency = function() {
+.arrowJSDependency = function() {
   fldr = system.file("htmlwidgets/lib/apache-arrow", package = "geoarrowWidget")
   list(
     htmltools::htmlDependency(
@@ -16,7 +16,7 @@ arrowJSDependency = function() {
 
 
 ## geoarrow js =================================================================
-geoarrowJSDependency = function() {
+.geoarrowJSDependency = function() {
   fldr = system.file("htmlwidgets/lib/geoarrow-js", package = "geoarrowWidget")
   list(
     htmltools::htmlDependency(
