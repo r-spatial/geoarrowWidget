@@ -13,7 +13,7 @@
   Attach `Arrow` and `Geoarrow` JavaScript dependencies to a widget.
 
 - [`extJSLibs()`](https://r-spatial.github.io/geoarrowWidget/reference/extJSLibs.md)
-  : Print names and versions of external JavaScript libraries.
+  : Names and versions of external JavaScript libraries.
 
 - [`geoarrowDummyWidget()`](https://r-spatial.github.io/geoarrowWidget/reference/geoarrowDummyWidget.md)
   : Basic Widget to Showcase Things.

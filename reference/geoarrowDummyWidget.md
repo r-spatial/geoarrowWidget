@@ -57,6 +57,11 @@ geoarrowDummyWidget(
   [`createWidget`](https://rdrr.io/pkg/htmlwidgets/man/createWidget.html)
   for details.
 
+## Value
+
+An `htmlwidget` with the parsed geoarrow data printed to the browser
+console.
+
 ## Examples
 
 ``` r

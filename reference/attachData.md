@@ -7,30 +7,41 @@ to a widget created with
 ## Usage
 
 ``` r
-attachData(x, file, url, ...)
+attachData(widget, data, file, url, ...)
 ```
 
 ## Arguments
 
-- x:
+- widget:
 
   A widget created with
   [`createWidget`](https://rdrr.io/pkg/htmlwidgets/man/createWidget.html).
 
+- data:
+
+  a `nanoarrow_array_stream` as created with
+  [`as_nanoarrow_array_stream`](https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html).
+  If supplied, `file` and `url` are ignored.
+
 - file:
 
-  A local file path to a data file to be attached to the widget.
+  A local file path to a data file to be attached to the widget. Ignored
+  if `data` is supplied.
 
 - url:
 
-  A URL to a file to be attached to the widget. Ignored if `file` is
-  supplied.
+  A URL to a file to be attached to the widget. Ignored if `data` or
+  `file` is supplied.
 
 - ...:
 
   further arguments supplied to internal methods. The most relevant
   argument is `name` which can be used to set the `id` of the
   attachment. See `details` and `examples` for further explanation.
+
+## Value
+
+The `widget` with the data attached.
 
 ## Details
 
@@ -41,7 +52,7 @@ data from the `href`. See e.g. the
 for an example of how to work with this data using
 [`onRender`](https://rdrr.io/pkg/htmlwidgets/man/onRender.html) or the
 [source of
-geoarrowDummyWidget.js](https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L17-L30)
+geoarrowDummyWidget.js](https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L33-L42)
 for another, similar example.
 
 NOTE that the `<link>` id can be controlled by supplying a `name`

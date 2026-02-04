@@ -1,8 +1,7 @@
 # geoarrowWidget: Attach Geoarrow Data to a Widget
 
 Provides functions and necessary JavaScript bindings to quickly transfer
-geospatial data from R memory to the browser for e.g. interactive
-visualisation.
+geospatial data from R memory to the browser.
 
 ## See also
 
@@ -16,5 +15,5 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Tim Appelhans <tim.appelhans@gmail.com> \[copyright
-holder\]
+**Maintainer**: Tim Appelhans <tim.appelhans@gmail.com>
+([ORCID](https://orcid.org/0000-0002-9824-2707))

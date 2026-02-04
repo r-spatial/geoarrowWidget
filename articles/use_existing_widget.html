@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">geoarrowWidget</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9023</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9024</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +40,7 @@
 <li><a class="dropdown-item" href="../articles/use_existing_widget.html">Use geoarrowWidget with an existing widget</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -179,8 +180,8 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wgt</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/listviewer/man/jsonedit.html" class="external-link">jsonedit</a></span><span class="op">(</span>listdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span>, elementId <span class="op">=</span> <span class="st">"lv-example"</span><span class="op">)</span></span>
-<span><span class="va">wgt</span> <span class="op">=</span> <span class="fu"><a href="../reference/attachGeoarrowDependencies.html">attachGeoarrowDependencies</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">wgt</span><span class="op">)</span></span>
-<span><span class="va">wgt</span> <span class="op">=</span> <span class="fu"><a href="../reference/attachData.html">attachData</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">wgt</span>, file <span class="op">=</span> <span class="va">path</span>, name <span class="op">=</span> <span class="st">"mydata"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">wgt</span> <span class="op">=</span> <span class="fu"><a href="../reference/attachGeoarrowDependencies.html">attachGeoarrowDependencies</a></span><span class="op">(</span>widget <span class="op">=</span> <span class="va">wgt</span><span class="op">)</span></span>
+<span><span class="va">wgt</span> <span class="op">=</span> <span class="fu"><a href="../reference/attachData.html">attachData</a></span><span class="op">(</span>widget <span class="op">=</span> <span class="va">wgt</span>, file <span class="op">=</span> <span class="va">path</span>, name <span class="op">=</span> <span class="st">"mydata"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <p>Finally, we specify the JavaScript code that handles the population of the created JsonEditor in the browser with our geoarrow data and render the widget.</p>
 <div class="cell">
@@ -216,7 +217,7 @@
 <span><span class="st">                }</span></span>
 <span><span class="st">              }</span></span>
 <span><span class="st">            });</span></span>
-<span><span class="st">            debugger;</span></span>
+<span><span class="st">            //debugger;</span></span>
 <span><span class="st">            console.log(arrow_table);</span></span>
 <span><span class="st"></span></span>
 <span><span class="st">          });</span></span>
@@ -226,7 +227,7 @@
 <span><span class="fu"><a href="https://rdrr.io/pkg/htmlwidgets/man/onRender.html" class="external-link">onRender</a></span><span class="op">(</span><span class="va">wgt</span>, <span class="va">js_code</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"mydata"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div class="jsonedit html-widget html-fill-item" id="lv-example" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="lv-example">{"x":{"data":[""],"options":{"mode":"tree","modes":["text","tree","table"]}},"evals":[],"jsHooks":{"render":[{"code":"function (el, x, data) {\n\n        // find data attachment in document\n        \n        let attachment = document.getElementById(data.name + \"-geoarrowWidget-attachment\");\n        \n        // find listviewer jsonedit element in document and delete current contents\n        \n        let jse = document.getElementById(\"lv-example\");\n        jse.innerHTML = null;\n\n        // load data from attachment into jsonedit element identified and emptied earlier\n        // metadata parsing from here:\n        // https://www.geeksforgeeks.org/javascript/how-to-convert-map-to-json-in-javascript/\n        \n        fetch(attachment.href)\n          .then(result => Arrow.tableFromIPC(result))\n          .then(arrow_table => {\n          \n            let newed = new JSONEditor.JSONEditor({\n              target: jse, \n              props: {\n                content: {\n                  json: [{\n                    \"geoarrow table\": JSON.parse(JSON.stringify(arrow_table)),\n                    \"geoarrow metadata\": JSON.parse(JSON.stringify(Object.fromEntries(arrow_table.schema.fields[3].metadata)))\n                  }]\n                }\n              }\n            });\n            debugger;\n            console.log(arrow_table);\n\n          });\n  }","data":{"name":"mydata"}}]}}</script>
+<script type="application/json" data-for="lv-example">{"x":{"data":[""],"options":{"mode":"tree","modes":["text","tree","table"]}},"evals":[],"jsHooks":{"render":[{"code":"function (el, x, data) {\n\n        // find data attachment in document\n        \n        let attachment = document.getElementById(data.name + \"-geoarrowWidget-attachment\");\n        \n        // find listviewer jsonedit element in document and delete current contents\n        \n        let jse = document.getElementById(\"lv-example\");\n        jse.innerHTML = null;\n\n        // load data from attachment into jsonedit element identified and emptied earlier\n        // metadata parsing from here:\n        // https://www.geeksforgeeks.org/javascript/how-to-convert-map-to-json-in-javascript/\n        \n        fetch(attachment.href)\n          .then(result => Arrow.tableFromIPC(result))\n          .then(arrow_table => {\n          \n            let newed = new JSONEditor.JSONEditor({\n              target: jse, \n              props: {\n                content: {\n                  json: [{\n                    \"geoarrow table\": JSON.parse(JSON.stringify(arrow_table)),\n                    \"geoarrow metadata\": JSON.parse(JSON.stringify(Object.fromEntries(arrow_table.schema.fields[3].metadata)))\n                  }]\n                }\n              }\n            });\n            //debugger;\n            console.log(arrow_table);\n\n          });\n  }","data":{"name":"mydata"}}]}}</script>
 </div>
 </div>
 <p>This now nearly looks like the data is defined in JavaScript, but not quite… If you open the browser console and inspect and compare the console log of the <code>arrow_table</code>, you’ll see that e.g. it carries the CRS metatdata which is lost in the <code>geoarrow table</code> in the JSONEditor. This is why we parse it separately as <code>geoarrow metadata</code>.</p>

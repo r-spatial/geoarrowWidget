@@ -7,19 +7,24 @@ dependencies to a widget created with
 ## Usage
 
 ``` r
-attachGeoarrowDependencies(x)
+attachGeoarrowDependencies(widget)
 
-attachGeoarrowDependency(x)
+attachGeoarrowDependency(widget)
 
-attachArrowDependency(x)
+attachArrowDependency(widget)
 ```
 
 ## Arguments
 
-- x:
+- widget:
 
   A widget created with
   [`createWidget`](https://rdrr.io/pkg/htmlwidgets/man/createWidget.html).
+
+## Value
+
+The `widget` including `Arrow` and/or `Geoarrow` JavaScript
+dependencies.
 
 ## Examples
 
