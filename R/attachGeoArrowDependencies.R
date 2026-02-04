@@ -3,7 +3,10 @@
 #' Pipe-friendly functions to attach `Arrow` and `Geoarrow` JavaScript dependencies
 #' to a widget created with \code{\link[htmlwidgets]{createWidget}}.
 #'
-#' @param x A widget created with \code{\link[htmlwidgets]{createWidget}}.
+#' @param widget A widget created with \code{\link[htmlwidgets]{createWidget}}.
+#'
+#' @returns
+#'   The `widget` including `Arrow` and/or `Geoarrow` JavaScript dependencies.
 #'
 #' @examples
 #' library(listviewer)
@@ -38,15 +41,15 @@
 #' @rdname attachGeoarrowDependencies
 #'
 #' @export
-attachGeoarrowDependencies = function(x) {
+attachGeoarrowDependencies = function(widget) {
 
-  x$dependencies = c(
-    x$dependencies
+  widget$dependencies = c(
+    widget$dependencies
     , .arrowJSDependency()
     , .geoarrowJSDependency()
   )
 
-  return(x)
+  return(widget)
 
 }
 
@@ -65,14 +68,14 @@ attachGeoarrowDependencies = function(x) {
 #' @rdname attachGeoarrowDependencies
 #'
 #' @export
-attachGeoarrowDependency = function(x) {
+attachGeoarrowDependency = function(widget) {
 
-  x$dependencies = c(
-    x$dependencies
+  widget$dependencies = c(
+    widget$dependencies
     , .geoarrowJSDependency()
   )
 
-  return(x)
+  return(widget)
 
 }
 
@@ -91,13 +94,13 @@ attachGeoarrowDependency = function(x) {
 #' @rdname attachGeoarrowDependencies
 #'
 #' @export
-attachArrowDependency = function(x) {
+attachArrowDependency = function(widget) {
 
-  x$dependencies = c(
-    x$dependencies
+  widget$dependencies = c(
+    widget$dependencies
     , .arrowJSDependency()
   )
 
-  return(x)
+  return(widget)
 
 }

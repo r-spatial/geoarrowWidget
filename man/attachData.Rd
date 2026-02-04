@@ -4,19 +4,27 @@
 \alias{attachData}
 \title{Attach data to a widget.}
 \usage{
-attachData(x, file, url, ...)
+attachData(widget, data, file, url, ...)
 }
 \arguments{
-\item{x}{A widget created with \code{\link[htmlwidgets]{createWidget}}.}
+\item{widget}{A widget created with \code{\link[htmlwidgets]{createWidget}}.}
 
-\item{file}{A local file path to a data file to be attached to the widget.}
+\item{data}{a \code{nanoarrow_array_stream} as created with
+\code{\link[nanoarrow]{as_nanoarrow_array_stream}}. If supplied, \code{file} and
+\code{url} are ignored.}
+
+\item{file}{A local file path to a data file to be attached to the widget.
+Ignored if \code{data} is supplied.}
 
 \item{url}{A URL to a file to be attached to the widget. Ignored if
-\code{file} is supplied.}
+\code{data} or \code{file} is supplied.}
 
 \item{...}{further arguments supplied to internal methods. The most relevant
 argument is \code{name} which can be used to set the \code{id} of the attachment. See
 \code{details} and \code{examples} for further explanation.}
+}
+\value{
+The \code{widget} with the data attached.
 }
 \description{
 Pipe-friendly function to attach data (any, really, not only \code{geoarrow}) to a
@@ -27,7 +35,7 @@ The provided data will be attached to the page created by the widget as a \verb{
 It can then be used by some script that will \code{fetch} this data from the \code{href}.
 See e.g. the \code{"Use geoarrowWidget with an existing widget"} vignette of this package
 for an example of how to work with this data using \code{\link[htmlwidgets]{onRender}}
-or the \href{https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L17-L30}{source of geoarrowDummyWidget.js}
+or the \href{https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L33-L42}{source of geoarrowDummyWidget.js}
 for another, similar example.
 
 NOTE that the \verb{<link>} id can be controlled by supplying a \code{name} argument

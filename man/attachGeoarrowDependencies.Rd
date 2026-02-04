@@ -6,14 +6,17 @@
 \alias{attachArrowDependency}
 \title{Attach \code{Arrow} and \code{Geoarrow} JavaScript dependencies to a widget.}
 \usage{
-attachGeoarrowDependencies(x)
+attachGeoarrowDependencies(widget)
 
-attachGeoarrowDependency(x)
+attachGeoarrowDependency(widget)
 
-attachArrowDependency(x)
+attachArrowDependency(widget)
 }
 \arguments{
-\item{x}{A widget created with \code{\link[htmlwidgets]{createWidget}}.}
+\item{widget}{A widget created with \code{\link[htmlwidgets]{createWidget}}.}
+}
+\value{
+The \code{widget} including \code{Arrow} and/or \code{Geoarrow} JavaScript dependencies.
 }
 \description{
 Pipe-friendly functions to attach \code{Arrow} and \code{Geoarrow} JavaScript dependencies

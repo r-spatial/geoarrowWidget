@@ -3,20 +3,26 @@
 #' Pipe-friendly function to attach data (any, really, not only `geoarrow`) to a
 #' widget created with \code{\link[htmlwidgets]{createWidget}}.
 #'
-#' @param x A widget created with \code{\link[htmlwidgets]{createWidget}}.
+#' @param widget A widget created with \code{\link[htmlwidgets]{createWidget}}.
+#' @param data a `nanoarrow_array_stream` as created with
+#'   \code{\link[nanoarrow]{as_nanoarrow_array_stream}}. If supplied, `file` and
+#'   `url` are ignored.
 #' @param file A local file path to a data file to be attached to the widget.
+#'   Ignored if `data` is supplied.
 #' @param url A URL to a file to be attached to the widget. Ignored if
-#'   `file` is supplied.
+#'   `data` or `file` is supplied.
 #' @param ... further arguments supplied to internal methods. The most relevant
 #'   argument is `name` which can be used to set the `id` of the attachment. See
 #'   `details` and `examples` for further explanation.
+#'
+#' @returns The `widget` with the data attached.
 #'
 #' @details
 #' The provided data will be attached to the page created by the widget as a `<link>`.
 #' It can then be used by some script that will `fetch` this data from the `href`.
 #' See e.g. the `"Use geoarrowWidget with an existing widget"` vignette of this package
 #' for an example of how to work with this data using \code{\link[htmlwidgets]{onRender}}
-#' or the [source of geoarrowDummyWidget.js](https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L17-L30)
+#' or the [source of geoarrowDummyWidget.js](https://github.com/r-spatial/geoarrowWidget/blob/master/inst/htmlwidgets/geoarrowDummyWidget.js#L33-L42)
 #' for another, similar example.
 #'
 #' NOTE that the `<link>` id can be controlled by supplying a `name` argument
@@ -76,17 +82,43 @@
 #' )
 #'
 #' @import listviewer
+#' @importFrom nanoarrow write_nanoarrow
 #'
 #' @export
 attachData <- function(
-    x
+    widget
+    , data
     , file
     , url
     , ...
 ) {
 
-  x$dependencies = c(
-    x$dependencies
+  dot_lst = list(...)
+
+  if (!missing(data)) {
+    # for now, we only accept nanoarrow_array_stream(s)
+    stopifnot(inherits(data, "nanoarrow_array_stream"))
+
+    nm = dot_lst[["name"]]
+
+    if (is.null(nm)) {
+      nm = deparse(substitute(data))
+    }
+
+    odr = tempfile()
+    dir.create(odr)
+    file = file.path(
+      odr
+      , sprintf("%s.arrow", nm)
+    )
+
+    nanoarrow::write_nanoarrow(data, file)
+    data$release()
+
+  }
+
+  widget$dependencies = c(
+    widget$dependencies
     , .dataAttachment(
       file = file
       , url = url
@@ -94,6 +126,6 @@ attachData <- function(
     )
   )
 
-  return(x)
+  return(widget)
 
 }
