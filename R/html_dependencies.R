@@ -127,7 +127,7 @@
   data_file <- basename(url)
 
   list(
-    htmltools::htm1lDependency(
+    htmltools::htmlDependency(
       name = dot_lst[["name"]]
       , version = dot_lst[["version"]]
       , src = c("href" = data_dir)
