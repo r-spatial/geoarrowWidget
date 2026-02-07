@@ -76,8 +76,8 @@ attachData(
   , url = "https://geoarrow-test.s3.eu-central-1.amazonaws.com/test_layer_interleaved.arrow"
  , name = "mydata"
 )
-#> Error: 'htm1lDependency' is not an exported object from 'namespace:htmltools'
 
+{"x":{"data":["Just some dummy text"],"options":{"mode":"tree","modes":["text","tree","table"]}},"evals":[],"jsHooks":[]}
 ## open the resulting page in the browser and inspect the page source, e.g.
 ## by pressing <Ctrl + u>. You should see a line like (href is shortened here):
 

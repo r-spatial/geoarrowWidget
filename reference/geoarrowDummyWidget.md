@@ -67,8 +67,8 @@ console.
 ``` r
 url = "https://geoarrow-test.s3.eu-central-1.amazonaws.com/test_layer_interleaved.arrow"
 wgt = geoarrowDummyWidget(url = url)
-#> Error: 'htm1lDependency' is not an exported object from 'namespace:htmltools'
 options(viewer = NULL)
 wgt
-#> Error: object 'wgt' not found
+
+{"x":{"message":"\n    Congratulations! You've rendered geoarrowDummyWidget in the browser!\n    To see the geoarrow data, open the web developer tools (e.g. by pressing F12) and navigate to 'Console'.\n    There you should see your data, which should look something like this:\n\n    > Object { schema: {...}, batches: (1) [...], j: Uint32Array(2) }\n  ","dataname":"mygeoarrowdata"},"evals":[],"jsHooks":[]}
 ```
