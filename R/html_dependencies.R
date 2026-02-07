@@ -31,6 +31,44 @@
   )
 }
 
+## parquet-wasm js =============================================================
+.parquetWasmDependencies = function() {
+  fldr = system.file("htmlwidgets/lib/parquet-wasm", package = "geoarrowWidget")
+  list(
+    htmltools::htmlDependency(
+      "parquet-wasm"
+      , readLines(file.path(fldr, "version.txt"))
+      , src = c(
+        # href = "https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js@0.3.1/dist"
+        fldr
+      )
+      , script = list(
+        src = "parquet-wasm.min.js"
+        , type = "module"
+      )
+    )
+  )
+}
+
+## parquet2arrow js =============================================================
+.parquet2arrowDependencies = function() {
+  fldr = system.file("htmlwidgets/lib/parquet-wasm", package = "geoarrowWidget")
+  list(
+    htmltools::htmlDependency(
+      "parquet2arrow"
+      , readLines(file.path(fldr, "version.txt"))
+      , src = c(
+        # href = "https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js@0.3.1/dist"
+        fldr
+      )
+      , script = list(
+        src = "parquet2arrow.js"
+        , type = "module"
+      )
+    )
+  )
+}
+
 ## data src ====================================================================
 .dataAttachment = function(file, url, ...) {
 
@@ -67,6 +105,7 @@
       , version = dot_lst[["version"]]
       , src = c("file" = data_dir)
       , attachment = c("geoarrowWidget" = data_file)
+      , all_files = FALSE
     )
   )
 }
@@ -88,11 +127,12 @@
   data_file <- basename(url)
 
   list(
-    htmltools::htmlDependency(
+    htmltools::htm1lDependency(
       name = dot_lst[["name"]]
       , version = dot_lst[["version"]]
       , src = c("href" = data_dir)
       , attachment = c("geoarrowWidget" = data_file)
+      , all_files = FALSE
     )
   )
 }
