@@ -3,7 +3,7 @@
 useful, other than attaching data to a generated htmlwidget and printing that
 in the browser console."><meta property="og:description" content="Widget used to highlight efficiency of geoarrow data transfer. Doesn't do anything
 useful, other than attaching data to a generated htmlwidget and printing that
-in the browser console."><!-- dependencies from examples --><script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/geoarrowDummyWidget-binding-0.0.0.9025/geoarrowDummyWidget.js"></script><script src="libs/apache-arrow-js-21.1.0/Arrow.es2015.min.js"></script><script src="libs/geoarrow-js-0.3.3/geoarrow.umd.min.js"></script><link id="mygeoarrowdata-geoarrowWidget-attachment" rel="attachment" href="https://geoarrow-test.s3.eu-central-1.amazonaws.com/test_layer_interleaved.arrow"></head><body>
+in the browser console."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -11,7 +11,7 @@ in the browser console."><!-- dependencies from examples --><script src="libs/ht
 
     <a class="navbar-brand me-2" href="../index.html">geoarrowWidget</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9025</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9026</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,10 +107,11 @@ See <code><a href="https://rdrr.io/pkg/htmlwidgets/man/createWidget.html" class=
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">url</span> <span class="op">=</span> <span class="st">"https://geoarrow-test.s3.eu-central-1.amazonaws.com/test_layer_interleaved.arrow"</span></span></span>
 <span class="r-in"><span><span class="va">wgt</span> <span class="op">=</span> <span class="fu">geoarrowDummyWidget</span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> 'htm1lDependency' is not an exported object from 'namespace:htmltools'</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>viewer <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">wgt</span></span></span>
-<div id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:700px;height:432.632880098888px;" class="geoarrowDummyWidget html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"message":"\n    Congratulations! You've rendered geoarrowDummyWidget in the browser!\n    To see the geoarrow data, open the web developer tools (e.g. by pressing F12) and navigate to 'Console'.\n    There you should see your data, which should look something like this:\n\n    > Object { schema: {...}, batches: (1) [...], j: Uint32Array(2) }\n  ","dataname":"mygeoarrowdata"},"evals":[],"jsHooks":[]}</script><span class="r-in"><span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'wgt' not found</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
