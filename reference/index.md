@@ -8,6 +8,7 @@
 - [`attachGeoarrowDependencies()`](https://r-spatial.github.io/geoarrowWidget/reference/attachGeoarrowDependencies.md)
   [`attachGeoarrowDependency()`](https://r-spatial.github.io/geoarrowWidget/reference/attachGeoarrowDependencies.md)
   [`attachArrowDependency()`](https://r-spatial.github.io/geoarrowWidget/reference/attachGeoarrowDependencies.md)
+  [`attachParquetWasmDependencies()`](https://r-spatial.github.io/geoarrowWidget/reference/attachGeoarrowDependencies.md)
   :
 
   Attach `Arrow` and `Geoarrow` JavaScript dependencies to a widget.

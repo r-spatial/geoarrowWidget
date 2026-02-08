@@ -12,6 +12,8 @@ attachGeoarrowDependencies(widget)
 attachGeoarrowDependency(widget)
 
 attachArrowDependency(widget)
+
+attachParquetWasmDependencies(widget)
 ```
 
 ## Arguments
@@ -23,8 +25,27 @@ attachArrowDependency(widget)
 
 ## Value
 
-The `widget` including `Arrow` and/or `Geoarrow` JavaScript
-dependencies.
+The `widget` including `Arrow`, `Geoarrow` and/or `parquet-wasm`
+JavaScript dependencies.
+
+## Details
+
+Attaching the `parquet-wasm` JavaScript dependency differs from
+attaching the other dependencies. In order to enable reading `.parquet`
+files in the browser we declare an `async` function `parquet2arrow` at
+the `window` level that can be used to read parquet data into an `Arrow`
+memory table in the browser. As such, `attachParquetWasmDependencies()`
+will also attach the `arrow` and `geoarrow` dependencies.
+
+So, in the browser, we can use this as follows:
+
+      fetch(<(geo)parquet-url>)
+        .then(pq => window.parquet2arrow(pq))
+        .then(arrow_table => {
+
+         // code to work with arrow table
+
+        });
 
 ## Examples
 
