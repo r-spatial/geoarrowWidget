@@ -4,6 +4,7 @@
 \alias{attachGeoarrowDependencies}
 \alias{attachGeoarrowDependency}
 \alias{attachArrowDependency}
+\alias{attachParquetWasmDependencies}
 \title{Attach \code{Arrow} and \code{Geoarrow} JavaScript dependencies to a widget.}
 \usage{
 attachGeoarrowDependencies(widget)
@@ -11,16 +12,38 @@ attachGeoarrowDependencies(widget)
 attachGeoarrowDependency(widget)
 
 attachArrowDependency(widget)
+
+attachParquetWasmDependencies(widget)
 }
 \arguments{
 \item{widget}{A widget created with \code{\link[htmlwidgets]{createWidget}}.}
 }
 \value{
-The \code{widget} including \code{Arrow} and/or \code{Geoarrow} JavaScript dependencies.
+The \code{widget} including \code{Arrow}, \code{Geoarrow} and/or \code{parquet-wasm}
+JavaScript dependencies.
 }
 \description{
 Pipe-friendly functions to attach \code{Arrow} and \code{Geoarrow} JavaScript dependencies
 to a widget created with \code{\link[htmlwidgets]{createWidget}}.
+}
+\details{
+Attaching the \code{parquet-wasm} JavaScript dependency differs from attaching
+the other dependencies. In order to enable reading \code{.parquet} files in the
+browser we declare an \code{async} function \code{parquet2arrow} at the \code{window} level
+that can be used to read parquet data into an \code{Arrow} memory table in the
+browser. As such, \code{attachParquetWasmDependencies()} will also attach the
+\code{arrow} and \code{geoarrow} dependencies.
+
+So, in the browser, we can use this as follows:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{  fetch(<(geo)parquet-url>)
+    .then(pq => window.parquet2arrow(pq))
+    .then(arrow_table => \{
+
+     // code to work with arrow table
+
+    \});
+}\if{html}{\out{</div>}}
 }
 \examples{
 library(listviewer)

@@ -39,7 +39,6 @@
       "parquet-wasm"
       , readLines(file.path(fldr, "version.txt"))
       , src = c(
-        # href = "https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js@0.3.1/dist"
         fldr
       )
       , script = list(
