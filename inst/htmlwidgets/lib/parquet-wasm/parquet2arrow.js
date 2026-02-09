@@ -1,7 +1,7 @@
 //import * as parquet from "./parquet-wasm-0.7.1/parquet-wasm.js"
 import * as parquet from "https://cdn.jsdelivr.net/npm/parquet-wasm/esm/+esm"
 
-debugger;
+//debugger;
 
 
 async function parquet2arrow(pq) {
