@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Attach Geoarrow Data to a Widget • geoarrowWidget</title>
+<title>Attach (Geo)Arrow and/or (Geo)Parquet Data to a Widget • geoarrowWidget</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Attach Geoarrow Data to a Widget">
-<meta name="description" content="Provides functions and necessary JavaScript bindings to quickly transfer geospatial data from R memory to the browser.">
-<meta property="og:description" content="Provides functions and necessary JavaScript bindings to quickly transfer geospatial data from R memory to the browser.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Attach (Geo)Arrow and/or (Geo)Parquet Data to a Widget">
+<meta name="description" content="Provides functions and necessary JavaScript bindings to quickly transfer spatial data from R memory or remote URLs to the browser for use in interactive HTML widgets created with the htmlwidgets R package. Leverages GeoArrow (&lt;https://geoarrow.org/&gt;) data representation for data stored in local R memory which is generally faster than traditional GeoJSON by minimising the amount of copy and (de)serialisation steps necessary for the data transfer. Furthermore, provides functionality and JavaScript bindings to consume GeoParquet (&lt;https://geoparquet.org/&gt;) files from remote URLs in the browser.">
+<meta property="og:description" content="Provides functions and necessary JavaScript bindings to quickly transfer spatial data from R memory or remote URLs to the browser for use in interactive HTML widgets created with the htmlwidgets R package. Leverages GeoArrow (&lt;https://geoarrow.org/&gt;) data representation for data stored in local R memory which is generally faster than traditional GeoJSON by minimising the amount of copy and (de)serialisation steps necessary for the data transfer. Furthermore, provides functionality and JavaScript bindings to consume GeoParquet (&lt;https://geoparquet.org/&gt;) files from remote URLs in the browser.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">geoarrowWidget</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +56,9 @@
 <div class="section level2">
 <h2 id="geoarrowwidget">geoarrowWidget<a class="anchor" aria-label="anchor" href="#geoarrowwidget"></a>
 </h2>
-<p>The aim of <code>geoarrowWidget</code> is to facilitate fast transfer of geospatial data between R memory and the browser using <code>geoarrow</code> memory layout. It provides functionality to attach <code>geoarrow</code> data to existing <code>htmlwidgets</code> along with the relevant JavaScript libraries to handle this data in the browser context. It does not do anything useful beyond the data transfer. It is up to the user/devloper to make further use of this data, e.g. render it somehow, using JavaScript.</p>
+<p>The aim of <code>geoarrowWidget</code> is to facilitate fast transfer of geospatial data between R memory and the browser using <code>GeoArrow</code> memory layout. It also provides <code>JavaScript</code> bindings for reading <code>GeoParquet</code> files from remote URLs. It provides functionality to attach <code>GeoArrow</code> and/or <code>GeoParuet</code> data to existing <code>htmlwidgets</code> along with the relevant <code>JavaScript</code> libraries to handle this data in the browser context.</p>
+<p>It does not do anything useful beyond the data transfer. It is up to the user/devloper to make further use of this data, e.g. render it somehow, using <code>JavaScript</code>.</p>
+<p>In theory, all functionality provided by <code>geoarrowWidget</code> will also work for the native, i.e. non-geospatial implementations of <code>Arrow</code> and <code>Parquet</code> data, but those are not thoroughly tested.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
