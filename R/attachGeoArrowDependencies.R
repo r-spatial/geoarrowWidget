@@ -1,7 +1,8 @@
-#' Attach `Arrow` and `Geoarrow` JavaScript dependencies to a widget.
+#' Attach `(Geo)Arrow` and/or `(Geo)Parquet` JavaScript dependencies to a widget.
 #'
-#' Pipe-friendly functions to attach `Arrow` and `Geoarrow` JavaScript dependencies
-#' to a widget created with \code{\link[htmlwidgets]{createWidget}}.
+#' Pipe-friendly functions to attach `(Geo)Arrow` and/or `(Geo)Parquet`
+#' JavaScript dependencies to a widget created with
+#' \code{\link[htmlwidgets]{createWidget}}.
 #'
 #' @param widget A widget created with \code{\link[htmlwidgets]{createWidget}}.
 #'

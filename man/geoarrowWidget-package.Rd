@@ -4,9 +4,9 @@
 \name{geoarrowWidget-package}
 \alias{geoarrowWidget}
 \alias{geoarrowWidget-package}
-\title{geoarrowWidget: Attach Geoarrow Data to a Widget}
+\title{geoarrowWidget: Attach '(Geo)Arrow' and/or '(Geo)Parquet' Data to a Widget}
 \description{
-Provides functions and necessary JavaScript bindings to quickly transfer geospatial data from R memory to the browser.
+Provides functions and necessary 'JavaScript' bindings to quickly transfer spatial data from R memory or remote URLs to the browser for use in interactive 'HTML' widgets created with the 'htmlwidgets' R package. Leverages 'GeoArrow' (\url{https://geoarrow.org/}) data representation for data stored in local R memory which is generally faster than traditional 'GeoJSON' by minimising the amount of copy and (de)serialisation steps necessary for the data transfer. Furthermore, provides functionality and 'JavaScript' bindings to consume 'GeoParquet' (\url{https://geoparquet.org/}) files from remote URLs in the browser.
 }
 \seealso{
 Useful links:

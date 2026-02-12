@@ -5,7 +5,7 @@
 \alias{attachGeoarrowDependency}
 \alias{attachArrowDependency}
 \alias{attachParquetWasmDependencies}
-\title{Attach \code{Arrow} and \code{Geoarrow} JavaScript dependencies to a widget.}
+\title{Attach \verb{(Geo)Arrow} and/or \verb{(Geo)Parquet} JavaScript dependencies to a widget.}
 \usage{
 attachGeoarrowDependencies(widget)
 
@@ -23,8 +23,9 @@ The \code{widget} including \code{Arrow}, \code{Geoarrow} and/or \code{parquet-w
 JavaScript dependencies.
 }
 \description{
-Pipe-friendly functions to attach \code{Arrow} and \code{Geoarrow} JavaScript dependencies
-to a widget created with \code{\link[htmlwidgets]{createWidget}}.
+Pipe-friendly functions to attach \verb{(Geo)Arrow} and/or \verb{(Geo)Parquet}
+JavaScript dependencies to a widget created with
+\code{\link[htmlwidgets]{createWidget}}.
 }
 \details{
 Attaching the \code{parquet-wasm} JavaScript dependency differs from attaching

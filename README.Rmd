@@ -18,11 +18,20 @@ knitr::opts_chunk$set(
 ## geoarrowWidget
 
 The aim of `geoarrowWidget` is to facilitate fast transfer of geospatial data 
-between R memory and the browser using `geoarrow` memory layout. 
-It provides functionality to attach `geoarrow` data to existing `htmlwidgets` along
-with the relevant JavaScript libraries to handle this data in the browser context.
-It does not do anything useful beyond the data transfer. It is up to the user/devloper 
-to make further use of this data, e.g. render it somehow, using JavaScript.
+between R memory and the browser using `GeoArrow` memory layout. It also
+provides `JavaScript` bindings for reading `GeoParquet` files from remote URLs.
+It provides functionality to attach `GeoArrow` and/or `GeoParuet` data to 
+existing `htmlwidgets` along with the relevant `JavaScript` libraries to handle 
+this data in the browser context. 
+
+It does not do anything useful beyond the data transfer. It is up to
+the user/devloper to make further use of this data, e.g. render it somehow,
+using `JavaScript`. 
+
+In theory, all functionality provided by `geoarrowWidget` will also work for the
+native, i.e. non-geospatial implementations of `Arrow` and `Parquet` data, but 
+those are not thoroughly tested.
+
 
 ## Installation
 
@@ -88,15 +97,16 @@ In the browser console (press F12) this will look something like this
 entries:
 
 1. `Object` - the geoarrow data
-2. `PerformanceResourceTiming` - details about the performance of loading the data
-including `encodedBodySize` of the data in Bytes and `duration` in milliseconds.
+2. `PerformanceResourceTiming` - details about the performance of loading the
+data including `encodedBodySize` of the data in Bytes and `duration` in
+milliseconds.
 
-Another way to see how long it takes to load the data is to open the `Network` tab
-in the developer tools and refresh the page. 
+Another way to see how long it takes to load the data is to open the `Network` 
+tab in the developer tools and refresh the page. 
 
 ![](man/figures/browser_console.png)
-_Note: the 200MB `encodedBodySize` and 375ms `duration` in the screenshot are the 
-result of running the above code with `1e7` points._
+_Note: the 200MB `encodedBodySize` and 375ms `duration` in the screenshot are 
+the result of running the above code with `1e7` points._
 
 <br>
 
