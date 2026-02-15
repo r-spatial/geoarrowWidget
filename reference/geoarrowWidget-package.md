@@ -5,10 +5,11 @@ transfer spatial data from R memory or remote URLs to the browser for
 use in interactive 'HTML' widgets created with the 'htmlwidgets' R
 package. Leverages 'GeoArrow' (<https://geoarrow.org/>) data
 representation for data stored in local R memory which is generally
-faster than traditional 'GeoJSON' by minimising the amount of copy and
-(de)serialisation steps necessary for the data transfer. Furthermore,
-provides functionality and 'JavaScript' bindings to consume 'GeoParquet'
-(<https://geoparquet.org/>) files from remote URLs in the browser.
+faster than traditional 'GeoJSON' by minimising the amount of copy,
+serialization and deserialization steps necessary for the data transfer.
+Furthermore, provides functionality and 'JavaScript' bindings to consume
+'GeoParquet' (<https://geoparquet.org/>) files from remote URLs in the
+browser.
 
 ## See also
 
