@@ -1,6 +1,6 @@
 Package: geoarrowWidget
 Title: Attach '(Geo)Arrow' and/or '(Geo)Parquet' Data to a Widget
-Version: 0.0.1.9000
+Version: 0.1.0
 Authors@R:
     c(person(given = "Tim",
              family = "Appelhans",
