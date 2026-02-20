@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 The aim of `geoarrowWidget` is to facilitate fast transfer of geospatial data 
 between R memory and the browser using `GeoArrow` memory layout. It also
 provides `JavaScript` bindings for reading `GeoParquet` files from remote URLs.
-It provides functionality to attach `GeoArrow` and/or `GeoParuet` data to 
+It provides functionality to attach `GeoArrow` and/or `GeoParquet` data to 
 existing `htmlwidgets` along with the relevant `JavaScript` libraries to handle 
 this data in the browser context. 
 
@@ -35,7 +35,12 @@ those are not thoroughly tested.
 
 ## Installation
 
-Not on CRAN yet, so install from github:
+From CRAN:
+
+```r
+install.packages("geoarrowWidget")
+```
+Or from github:
 
 ```r
 remotes::install_github("r-spatial/geoarrowWidget")

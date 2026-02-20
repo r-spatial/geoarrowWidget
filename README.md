@@ -10,7 +10,7 @@ The aim of `geoarrowWidget` is to facilitate fast transfer of geospatial
 data between R memory and the browser using `GeoArrow` memory layout. It
 also provides `JavaScript` bindings for reading `GeoParquet` files from
 remote URLs. It provides functionality to attach `GeoArrow` and/or
-`GeoParuet` data to existing `htmlwidgets` along with the relevant
+`GeoParquet` data to existing `htmlwidgets` along with the relevant
 `JavaScript` libraries to handle this data in the browser context.
 
 It does not do anything useful beyond the data transfer. It is up to the
@@ -23,7 +23,13 @@ for the native, i.e. non-geospatial implementations of `Arrow` and
 
 ## Installation
 
-Not on CRAN yet, so install from github:
+From CRAN:
+
+``` r
+install.packages("geoarrowWidget")
+```
+
+Or from github:
 
 ``` r
 remotes::install_github("r-spatial/geoarrowWidget")
