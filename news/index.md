@@ -1,6 +1,6 @@
 # Changelog
 
-## geoarrowWidget 0.1.0.9001 (2026-03-05)
+## geoarrowWidget 0.1.0.9002 (2026-03-05)
 
 ##### ✨ features and improvements
 
@@ -9,6 +9,8 @@
 ##### 💬 documentation etc
 
 ##### 🍬 miscellaneous
+
+- add RConsortium as funder to DESCRIPTION (incl. ROR).
 
 ## geoarrowWidget 0.1.0 (2026-02-15)
 
