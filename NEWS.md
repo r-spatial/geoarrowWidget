@@ -8,6 +8,8 @@
 
 #### 🍬 miscellaneous
 
+  * add RConsortium as funder to DESCRIPTION (incl. ROR).
+
 
 # geoarrowWidget 0.1.0 (2026-02-15)
 
