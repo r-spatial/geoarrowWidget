@@ -6,7 +6,10 @@ Authors@R:
              family = "Appelhans",
              role = c("cre", "aut"),
              email = "tim.appelhans@gmail.com",
-             comment = c(ORCID = "0000-0002-9824-2707")))
+             comment = c(ORCID = "0000-0002-9824-2707")),
+      person("RConsortium", 
+             role = "fnd",
+             comment = c("https://r-consortium.org/", ROR = "01z833950")))
 Maintainer: Tim Appelhans <tim.appelhans@gmail.com>
 Description: Provides functions and necessary 'JavaScript' bindings to quickly
     transfer spatial data from R memory or remote URLs to the browser for use in
