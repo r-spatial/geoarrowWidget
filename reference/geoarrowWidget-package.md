@@ -25,3 +25,8 @@ Useful links:
 
 **Maintainer**: Tim Appelhans <tim.appelhans@gmail.com>
 ([ORCID](https://orcid.org/0000-0002-9824-2707))
+
+Other contributors:
+
+- RConsortium ([ROR](https://ror.org/01z833950))
+  (https://r-consortium.org/) \[funder\]
