@@ -1,6 +1,6 @@
 # Changelog
 
-## geoarrowWidget 0.1.0.9003 (2026-03-05)
+## geoarrowWidget 0.1.0.9004 (2026-08-03)
 
 ##### ✨ features and improvements
 

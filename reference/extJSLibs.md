@@ -26,5 +26,5 @@ details on the JavaScript depencencies.
 ``` r
   extJSLibs()
 #>     geoarrow-js apache-arrow-js    parquet-wasm 
-#>         "0.3.3"        "21.1.0"         "0.7.1" 
+#>         "0.3.3"        "21.2.0"         "0.7.1" 
 ```

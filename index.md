@@ -20,12 +20,14 @@ for the native, i.e. non-geospatial implementations of `Arrow` and
 From CRAN:
 
 ``` r
+
 install.packages("geoarrowWidget")
 ```
 
 Or from github:
 
 ``` r
+
 remotes::install_github("r-spatial/geoarrowWidget")
 ```
 
@@ -35,6 +37,7 @@ For testing purposes, `geoarrowWidget` provides a minimal `htmlwidget`
 called `geoarrowDummyWidget`. Here’s an example of how to use it:
 
 ``` r
+
 library(geoarrowWidget)
 library(wk)
 library(nanoarrow)

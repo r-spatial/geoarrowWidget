@@ -13,6 +13,7 @@ to examine a (geo)arrow file.
 First, we create some spatial data from scratch:
 
 ``` r
+
 library(geoarrowWidget)
 library(nanoarrow)
 library(geoarrow)
@@ -41,6 +42,7 @@ geometry is properly handled, especially the geometry encoding and the
 crs.
 
 ``` r
+
 fl = tempfile()
 dir.create(fl)
 path = file.path(
@@ -115,6 +117,7 @@ data_stream$get_schema()
      $ dictionary: NULL
 
 ``` r
+
 write_nanoarrow(data_stream, path)
 ```
 
@@ -124,6 +127,7 @@ widget via the `elementId` so that we can find the widget in the
 document and subsequently modify it.
 
 ``` r
+
 wgt = jsonedit(listdata = list(""), elementId = "lv-example")
 wgt = attachGeoarrowDependencies(widget = wgt)
 wgt = attachData(widget = wgt, file = path, name = "mydata")
@@ -134,6 +138,7 @@ the created JsonEditor in the browser with our geoarrow data and render
 the widget.
 
 ``` r
+
 js_code = htmlwidgets::JS(
   'function (el, x, data) {
 
