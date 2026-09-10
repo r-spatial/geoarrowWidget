@@ -31,26 +31,8 @@
   )
 }
 
-## parquet-wasm js =============================================================
-.parquetWasmDependencies = function() {
-  fldr = system.file("htmlwidgets/lib/parquet-wasm", package = "geoarrowWidget")
-  list(
-    htmltools::htmlDependency(
-      "parquet-wasm"
-      , readLines(file.path(fldr, "version.txt"))
-      , src = c(
-        fldr
-      )
-      , script = list(
-        src = "parquet-wasm.min.js"
-        , type = "module"
-      )
-    )
-  )
-}
-
 ## parquet2arrow js =============================================================
-.parquet2arrowDependencies = function() {
+.parquet2arrowDependency = function() {
   fldr = system.file("htmlwidgets/lib/parquet-wasm", package = "geoarrowWidget")
   list(
     htmltools::htmlDependency(
@@ -82,7 +64,7 @@
   stop("need 'file' or 'url'!", call. = FALSE)
 }
 
-## data src ====================================================================
+## file src ====================================================================
 .fileAttachment = function(file, ...) {
 
   dflt_lst = list(
@@ -135,3 +117,22 @@
     )
   )
 }
+
+#
+# ## parquet-wasm js =============================================================
+# .parquetWasmDependencies = function() {
+#   fldr = system.file("htmlwidgets/lib/parquet-wasm", package = "geoarrowWidget")
+#   list(
+#     htmltools::htmlDependency(
+#       "parquet-wasm"
+#       , readLines(file.path(fldr, "version.txt"))
+#       , src = c(
+#         fldr
+#       )
+#       , script = list(
+#         src = "parquet-wasm.min.js"
+#         , type = "module"
+#       )
+#     )
+#   )
+# }
