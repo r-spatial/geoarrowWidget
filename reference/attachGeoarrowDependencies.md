@@ -14,6 +14,8 @@ attachGeoarrowDependency(widget)
 attachArrowDependency(widget)
 
 attachParquetWasmDependencies(widget)
+
+attachGeoParquetWasmDependencies(widget)
 ```
 
 ## Arguments
@@ -25,7 +27,7 @@ attachParquetWasmDependencies(widget)
 
 ## Value
 
-The `widget` including `Arrow`, `Geoarrow` and/or `parquet-wasm`
+The `widget` including `Arrow`, `Geoarrow` and/or `(geo)parquet-wasm`
 JavaScript dependencies.
 
 ## Details
@@ -41,6 +43,24 @@ So, in the browser, we can use this as follows:
 
       fetch(<(geo)parquet-url>)
         .then(pq => window.parquet2arrow(pq))
+        .then(arrow_table => {
+
+         // code to work with arrow table
+
+        });
+
+Attaching the `geoparquet-wasm` JavaScript dependency differs from
+attaching the other dependencies. In order to enable reading `.parquet`
+files in the browser we declare an `async` function `geoparquet2arrow`
+at the `window` level that can be used to read geoparquet data into an
+`Arrow` memory table in the browser. As such,
+`attachGeoParquetWasmDependencies()` will also attach the `arrow` and
+`geoarrow` dependencies.
+
+So, in the browser, we can use this as follows:
+
+      fetch(<geoparquet-url>)
+        .then(pq => window.geoparquet2arrow(pq))
         .then(arrow_table => {
 
          // code to work with arrow table

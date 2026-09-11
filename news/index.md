@@ -1,8 +1,11 @@
 # Changelog
 
-## geoarrowWidget 0.1.0.9006 (2026-09-10)
+## geoarrowWidget 0.1.0.9007 (2026-09-11)
 
 ##### ✨ features and improvements
+
+- add `geoaprquet-wasm` dependency, including `geoparquet2arrow` JS
+  function.
 
 ##### 🐛 bug fixes
 
