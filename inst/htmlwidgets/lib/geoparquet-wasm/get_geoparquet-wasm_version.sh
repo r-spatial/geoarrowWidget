@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BASEURL="https://cdn.jsdelivr.net/npm/parquet-wasm"
+BASEURL="https://cdn.jsdelivr.net/npm/@geoarrow/geoparquet-wasm"
 
 # get (latest) dep
 # see https://stackoverflow.com/a/38795701/2555983 for --backups

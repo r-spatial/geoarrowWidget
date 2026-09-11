@@ -7,18 +7,24 @@
 extJSLibs()
 }
 \value{
-A named character vector with the versions of the \code{GeoArrow}, \code{Arrow}
-and \code{Parquet-WASM} JavaScript libraries shipped with this package.
+A named character vector with the versions of the \code{GeoArrow}, \code{Arrow},
+\code{Parquet-WASM} and \code{GeoParquet-WASM} JavaScript libraries shipped
+with this package.
 }
 \description{
 Names and versions of the external JavaScript libraries used in
 \code{geoarrowWidget}.
 }
 \details{
-See e.g. \url{https://cdn.jsdelivr.net/npm/apache-arrow/package.json}
-or \url{https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js/package.json} or
-\url{https://cdn.jsdelivr.net/npm/parquet-wasm/package.json} for
-more details on the JavaScript depencencies.
+See e.g.
+\itemize{
+\item \url{https://cdn.jsdelivr.net/npm/apache-arrow/package.json},
+\item \url{https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js/package.json},
+\item \url{https://cdn.jsdelivr.net/npm/parquet-wasm/package.json},
+\item \url{https://cdn.jsdelivr.net/npm/@geoarrow/geoparquet-wasm/package.json}
+}
+
+for more details on the JavaScript depencencies.
 }
 \examples{
   extJSLibs()

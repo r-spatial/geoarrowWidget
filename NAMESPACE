@@ -2,6 +2,7 @@
 
 export(attachArrowDependency)
 export(attachData)
+export(attachGeoParquetWasmDependencies)
 export(attachGeoarrowDependencies)
 export(attachGeoarrowDependency)
 export(attachParquetWasmDependencies)

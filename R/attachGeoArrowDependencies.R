@@ -7,7 +7,7 @@
 #' @param widget A widget created with \code{\link[htmlwidgets]{createWidget}}.
 #'
 #' @returns
-#'   The `widget` including `Arrow`, `Geoarrow` and/or `parquet-wasm`
+#'   The `widget` including `Arrow`, `Geoarrow` and/or `(geo)parquet-wasm`
 #'   JavaScript dependencies.
 #'
 #' @examples
@@ -146,6 +146,54 @@ attachParquetWasmDependencies = function(widget) {
   widget$dependencies = c(
     widget$dependencies
     , .parquet2arrowDependency()
+    , .arrowJSDependency()
+    , .geoarrowJSDependency()
+  )
+
+  return(widget)
+
+}
+
+
+#' @details
+#' Attaching the `geoparquet-wasm` JavaScript dependency differs from attaching
+#' the other dependencies. In order to enable reading `.parquet` files in the
+#' browser we declare an `async` function `geoparquet2arrow` at the `window` level
+#' that can be used to read geoparquet data into an `Arrow` memory table in the
+#' browser. As such, `attachGeoParquetWasmDependencies()` will also attach the
+#' `arrow` and `geoarrow` dependencies.
+#'
+#' So, in the browser, we can use this as follows:
+#'
+#' ```
+#'   fetch(<geoparquet-url>)
+#'     .then(pq => window.geoparquet2arrow(pq))
+#'     .then(arrow_table => {
+#'
+#'      // code to work with arrow table
+#'
+#'     });
+#' ```
+#'
+#' @tests tinytest
+#' library(listviewer)
+#'
+#' wgt = jsonedit(
+#'   list("Just some dummy text")
+#'   , elementId = "lv-example"
+#' )
+#' wgt = attachGeoParquetWasmDependencies(wgt)
+#'
+#' expect_length(wgt$dependencies, 3)
+#'
+#' @rdname attachGeoarrowDependencies
+#'
+#' @export
+attachGeoParquetWasmDependencies = function(widget) {
+
+  widget$dependencies = c(
+    widget$dependencies
+    , .geoparquet2arrowDependency()
     , .arrowJSDependency()
     , .geoarrowJSDependency()
   )
