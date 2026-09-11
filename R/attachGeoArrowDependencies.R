@@ -145,8 +145,7 @@ attachParquetWasmDependencies = function(widget) {
 
   widget$dependencies = c(
     widget$dependencies
-    # , .parquetWasmDependencies()
-    , .parquet2arrowDependencies()
+    , .parquet2arrowDependency()
     , .arrowJSDependency()
     , .geoarrowJSDependency()
   )

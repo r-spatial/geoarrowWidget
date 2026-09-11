@@ -26,12 +26,17 @@ extJSLibs = function() {
     c(
       .geoarrowJSDependency()[[1]]$version
       , .arrowJSDependency()[[1]]$version
-      , .parquetWasmDependencies()[[1]]$version
+      , readLines(
+        file.path(
+          system.file("htmlwidgets/lib/parquet-wasm", package = "geoarrowWidget")
+          , "version.txt"
+        )
+      )
     )
     , names = c(
       .geoarrowJSDependency()[[1]]$name
       , .arrowJSDependency()[[1]]$name
-      , .parquetWasmDependencies()[[1]]$name
+      , "parquet-wasm"
     )
   )
 

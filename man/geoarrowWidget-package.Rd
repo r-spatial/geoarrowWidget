@@ -20,6 +20,11 @@ Useful links:
 \author{
 \strong{Maintainer}: Tim Appelhans \email{tim.appelhans@gmail.com} (\href{https://orcid.org/0000-0002-9824-2707}{ORCID})
 
+Authors:
+\itemize{
+  \item Tim Appelhans \email{tim.appelhans@gmail.com} (\href{https://orcid.org/0000-0002-9824-2707}{ORCID})
+}
+
 Other contributors:
 \itemize{
   \item RConsortium (\href{https://ror.org/01z833950}{ROR}) (https://r-consortium.org/) [funder]
