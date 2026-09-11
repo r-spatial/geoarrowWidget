@@ -2,6 +2,8 @@
 
 #### ✨ features and improvements
 
+  * add `geoaprquet-wasm` dependency, including `geoparquet2arrow` JS function.
+
 #### 🐛 bug fixes
 
 #### 💬 documentation etc

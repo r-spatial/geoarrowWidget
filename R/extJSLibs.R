@@ -3,21 +3,26 @@
 #' Names and versions of the external JavaScript libraries used in
 #' `geoarrowWidget`.
 #'
-#' See e.g. \url{https://cdn.jsdelivr.net/npm/apache-arrow/package.json}
-#' or \url{https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js/package.json} or
-#' \url{https://cdn.jsdelivr.net/npm/parquet-wasm/package.json} for
-#' more details on the JavaScript depencencies.
+#' See e.g.
+#'
+#' * \url{https://cdn.jsdelivr.net/npm/apache-arrow/package.json},
+#' * \url{https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js/package.json},
+#' * \url{https://cdn.jsdelivr.net/npm/parquet-wasm/package.json},
+#' * \url{https://cdn.jsdelivr.net/npm/@geoarrow/geoparquet-wasm/package.json}
+#'
+#' for more details on the JavaScript depencencies.
 #'
 #' @returns
-#'   A named character vector with the versions of the `GeoArrow`, `Arrow`
-#'   and `Parquet-WASM` JavaScript libraries shipped with this package.
+#'   A named character vector with the versions of the `GeoArrow`, `Arrow`,
+#'   `Parquet-WASM` and `GeoParquet-WASM` JavaScript libraries shipped
+#'   with this package.
 #'
 #' @examples
 #'   extJSLibs()
 #'
 #' @tests tinytest
-#' expect_length(extJSLibs(), 3)
-#' expect_length(names(extJSLibs()), 3)
+#' expect_length(extJSLibs(), 4)
+#' expect_length(names(extJSLibs()), 4)
 #'
 #' @export
 extJSLibs = function() {
@@ -28,7 +33,19 @@ extJSLibs = function() {
       , .arrowJSDependency()[[1]]$version
       , readLines(
         file.path(
-          system.file("htmlwidgets/lib/parquet-wasm", package = "geoarrowWidget")
+          system.file(
+            "htmlwidgets/lib/parquet-wasm"
+            , package = "geoarrowWidget"
+          )
+          , "version.txt"
+        )
+      )
+      , readLines(
+        file.path(
+          system.file(
+            "htmlwidgets/lib/geoparquet-wasm"
+            , package = "geoarrowWidget"
+          )
           , "version.txt"
         )
       )
@@ -37,6 +54,7 @@ extJSLibs = function() {
       .geoarrowJSDependency()[[1]]$name
       , .arrowJSDependency()[[1]]$name
       , "parquet-wasm"
+      , "geoparquet-wasm"
     )
   )
 
