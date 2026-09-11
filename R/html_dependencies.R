@@ -56,7 +56,8 @@
   list(
     htmltools::htmlDependency(
       "geoparquet2arrow"
-      , readLines(file.path(fldr, "version.txt"))
+      ## print.htmlwidgets does not like "-beta"!
+      , gsub("-beta.", ".900", readLines(file.path(fldr, "version.txt")))
       , src = c(
         # href = "https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js@0.3.1/dist"
         fldr
