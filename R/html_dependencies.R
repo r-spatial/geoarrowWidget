@@ -39,7 +39,6 @@
       "parquet2arrow"
       , readLines(file.path(fldr, "version.txt"))
       , src = c(
-        # href = "https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js@0.3.1/dist"
         fldr
       )
       , script = list(
@@ -60,11 +59,28 @@
       , gsub("[a-zA-Z-]*", "", readLines(file.path(fldr, "version.txt")))
       # , gsub("-beta.", ".900", readLines(file.path(fldr, "version.txt")))
       , src = c(
-        # href = "https://cdn.jsdelivr.net/npm/@geoarrow/geoarrow-js@0.3.1/dist"
         fldr
       )
       , script = list(
         src = "geoparquet2arrow.js"
+        , type = "module"
+      )
+    )
+  )
+}
+
+## parquet2arrow js ============================================================
+.fgb2arrowDependency = function() {
+  fldr = system.file("htmlwidgets/lib/flatgeobuf-wasm", package = "geoarrowWidget")
+  list(
+    htmltools::htmlDependency(
+      "fgb2arrow"
+      , gsub("[a-zA-Z-]*", "", readLines(file.path(fldr, "version.txt")))
+      , src = c(
+        fldr
+      )
+      , script = list(
+        src = "fgb2arrow.js"
         , type = "module"
       )
     )

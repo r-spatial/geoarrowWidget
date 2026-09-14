@@ -13,16 +13,16 @@
 #' for more details on the JavaScript depencencies.
 #'
 #' @returns
-#'   A named character vector with the versions of the `GeoArrow`, `Arrow`,
-#'   `Parquet-WASM` and `GeoParquet-WASM` JavaScript libraries shipped
-#'   with this package.
+#'   A named character vector with the versions of the `geoarrow`, `arrow`,
+#'   `parquet-wasm`, `geoparquet-wasm` & `flatgeobuf-wasm` JavaScript libraries
+#'   shipped with this package.
 #'
 #' @examples
 #'   extJSLibs()
 #'
 #' @tests tinytest
-#' expect_length(extJSLibs(), 4)
-#' expect_length(names(extJSLibs()), 4)
+#' expect_length(extJSLibs(), 5)
+#' expect_length(names(extJSLibs()), 5)
 #'
 #' @export
 extJSLibs = function() {
@@ -49,12 +49,22 @@ extJSLibs = function() {
           , "version.txt"
         )
       )
+      , readLines(
+        file.path(
+          system.file(
+            "htmlwidgets/lib/flatgeobuf-wasm"
+            , package = "geoarrowWidget"
+          )
+          , "version.txt"
+        )
+      )
     )
     , names = c(
       .geoarrowJSDependency()[[1]]$name
       , .arrowJSDependency()[[1]]$name
       , "parquet-wasm"
       , "geoparquet-wasm"
+      , "flatgeobuf-wasm"
     )
   )
 

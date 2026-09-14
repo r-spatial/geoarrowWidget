@@ -2,5 +2,5 @@
 
 # Test found in extJSLibs.R:23 (file:line)
   
-expect_length(extJSLibs(), 4)
-expect_length(names(extJSLibs()), 4)
+expect_length(extJSLibs(), 5)
+expect_length(names(extJSLibs()), 5)
