@@ -1,6 +1,6 @@
 # File created by roxut; edit the function definition file, not this file
 
-# Test found in attachGeoArrowDependencies.R:61 (file:line)
+# Test found in attachGeoArrowDependencies.R:232 (file:line)
   
 library(listviewer)
 
@@ -8,6 +8,6 @@ wgt = jsonedit(
   list("Just some dummy text")
   , elementId = "lv-example"
 )
-wgt = attachGeoarrowDependency(wgt)
+wgt = attachFlatgeobufWasmDependencies(wgt)
 
-expect_length(wgt$dependencies, 1)
+expect_length(wgt$dependencies, 3)

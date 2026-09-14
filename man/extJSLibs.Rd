@@ -7,9 +7,9 @@
 extJSLibs()
 }
 \value{
-A named character vector with the versions of the \code{GeoArrow}, \code{Arrow},
-\code{Parquet-WASM} and \code{GeoParquet-WASM} JavaScript libraries shipped
-with this package.
+A named character vector with the versions of the \code{geoarrow}, \code{arrow},
+\code{parquet-wasm}, \code{geoparquet-wasm} & \code{flatgeobuf-wasm} JavaScript libraries
+shipped with this package.
 }
 \description{
 Names and versions of the external JavaScript libraries used in

@@ -6,6 +6,7 @@
 \alias{attachArrowDependency}
 \alias{attachParquetWasmDependencies}
 \alias{attachGeoParquetWasmDependencies}
+\alias{attachFlatgeobufWasmDependencies}
 \title{Attach \verb{(Geo)Arrow} and/or \verb{(Geo)Parquet} JavaScript dependencies to a widget.}
 \usage{
 attachGeoarrowDependencies(widget)
@@ -17,6 +18,8 @@ attachArrowDependency(widget)
 attachParquetWasmDependencies(widget)
 
 attachGeoParquetWasmDependencies(widget)
+
+attachFlatgeobufWasmDependencies(widget)
 }
 \arguments{
 \item{widget}{A widget created with \code{\link[htmlwidgets]{createWidget}}.}
@@ -60,6 +63,24 @@ So, in the browser, we can use this as follows:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{  fetch(<geoparquet-url>)
     .then(pq => window.geoparquet2arrow(pq))
+    .then(arrow_table => \{
+
+     // code to work with arrow table
+
+    \});
+}\if{html}{\out{</div>}}
+
+Attaching the \code{flatgeobuf-wasm} JavaScript dependency differs from attaching
+the other dependencies. In order to enable reading \code{.fgb} files in the
+browser we declare an \code{async} function \code{fgb2arrow} at the \code{window} level
+that can be used to read flatgeobuf data into an \code{Arrow} memory table in the
+browser. As such, \code{attachFlatgeobufWasmDependencies()} will also attach the
+\code{arrow} and \code{geoarrow} dependencies.
+
+So, in the browser, we can use this as follows:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{  fetch(<flatgeobuf-url>)
+    .then(pq => window.fgb2arrow(pq))
     .then(arrow_table => \{
 
      // code to work with arrow table

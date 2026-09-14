@@ -51,6 +51,8 @@ attachGeoarrowDependencies = function(widget) {
     , .geoarrowJSDependency()
   )
 
+  widget$dependencies = widget$dependencies[!duplicated(widget$dependencies)]
+
   return(widget)
 
 }
@@ -150,6 +152,8 @@ attachParquetWasmDependencies = function(widget) {
     , .geoarrowJSDependency()
   )
 
+  widget$dependencies = widget$dependencies[!duplicated(widget$dependencies)]
+
   return(widget)
 
 }
@@ -197,6 +201,58 @@ attachGeoParquetWasmDependencies = function(widget) {
     , .arrowJSDependency()
     , .geoarrowJSDependency()
   )
+
+  widget$dependencies = widget$dependencies[!duplicated(widget$dependencies)]
+
+  return(widget)
+
+}
+
+
+#' @details
+#' Attaching the `flatgeobuf-wasm` JavaScript dependency differs from attaching
+#' the other dependencies. In order to enable reading `.fgb` files in the
+#' browser we declare an `async` function `fgb2arrow` at the `window` level
+#' that can be used to read flatgeobuf data into an `Arrow` memory table in the
+#' browser. As such, `attachFlatgeobufWasmDependencies()` will also attach the
+#' `arrow` and `geoarrow` dependencies.
+#'
+#' So, in the browser, we can use this as follows:
+#'
+#' ```
+#'   fetch(<flatgeobuf-url>)
+#'     .then(pq => window.fgb2arrow(pq))
+#'     .then(arrow_table => {
+#'
+#'      // code to work with arrow table
+#'
+#'     });
+#' ```
+#'
+#' @tests tinytest
+#' library(listviewer)
+#'
+#' wgt = jsonedit(
+#'   list("Just some dummy text")
+#'   , elementId = "lv-example"
+#' )
+#' wgt = attachFlatgeobufWasmDependencies(wgt)
+#'
+#' expect_length(wgt$dependencies, 3)
+#'
+#' @rdname attachGeoarrowDependencies
+#'
+#' @export
+attachFlatgeobufWasmDependencies = function(widget) {
+
+  widget$dependencies = c(
+    widget$dependencies
+    , .fgb2arrowDependency()
+    , .arrowJSDependency()
+    , .geoarrowJSDependency()
+  )
+
+  widget$dependencies = widget$dependencies[!duplicated(widget$dependencies)]
 
   return(widget)
 
