@@ -51,6 +51,8 @@ attachGeoarrowDependencies = function(widget) {
     , .geoarrowJSDependency()
   )
 
+  widget$dependencies = widget$dependencies[!duplicated(widget$dependencies)]
+
   return(widget)
 
 }
@@ -150,6 +152,8 @@ attachParquetWasmDependencies = function(widget) {
     , .geoarrowJSDependency()
   )
 
+  widget$dependencies = widget$dependencies[!duplicated(widget$dependencies)]
+
   return(widget)
 
 }
@@ -198,6 +202,8 @@ attachGeoParquetWasmDependencies = function(widget) {
     , .geoarrowJSDependency()
   )
 
+  widget$dependencies = widget$dependencies[!duplicated(widget$dependencies)]
+
   return(widget)
 
 }
@@ -245,6 +251,8 @@ attachFlatgeobufWasmDependencies = function(widget) {
     , .arrowJSDependency()
     , .geoarrowJSDependency()
   )
+
+  widget$dependencies = widget$dependencies[!duplicated(widget$dependencies)]
 
   return(widget)
 

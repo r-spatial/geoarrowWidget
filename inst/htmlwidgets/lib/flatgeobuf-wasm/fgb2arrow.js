@@ -4,7 +4,7 @@ async function fgb2arrow(fgb) {
   await flatgeobuf.default();
   const parquetBytes = new Uint8Array(await fgb.arrayBuffer());
   const wasmTable = flatgeobuf.readFlatGeobuf(parquetBytes);
-  const arrow_table = Arrow.tableFromIPC(wasmTable.intoTable().intoIPCStream());
+  const arrow_table = Arrow.tableFromIPC(wasmTable.intoIPCStream());
   return arrow_table;
 }
 
