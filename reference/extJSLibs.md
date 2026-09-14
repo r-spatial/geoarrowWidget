@@ -11,9 +11,9 @@ extJSLibs()
 
 ## Value
 
-A named character vector with the versions of the `GeoArrow`, `Arrow`,
-`Parquet-WASM` and `GeoParquet-WASM` JavaScript libraries shipped with
-this package.
+A named character vector with the versions of the `geoarrow`, `arrow`,
+`parquet-wasm`, `geoparquet-wasm` & `flatgeobuf-wasm` JavaScript
+libraries shipped with this package.
 
 ## Details
 
@@ -33,6 +33,6 @@ for more details on the JavaScript depencencies.
 
 ``` r
   extJSLibs()
-#>     geoarrow-js apache-arrow-js    parquet-wasm geoparquet-wasm 
-#>         "0.3.3"        "21.2.0"         "0.7.2"  "0.2.0-beta.5" 
+#>     geoarrow-js apache-arrow-js    parquet-wasm geoparquet-wasm flatgeobuf-wasm 
+#>         "0.3.3"        "21.2.0"         "0.7.2"  "0.2.0-beta.5"  "0.2.0-beta.4" 
 ```

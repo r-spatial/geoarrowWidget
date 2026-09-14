@@ -11,7 +11,7 @@ createWidget."><!-- dependencies from examples --><script src="libs/htmlwidgets-
 
     <a class="navbar-brand me-2" href="../index.html">geoarrowWidget</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9009</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9011</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,9 @@ JavaScript dependencies to a widget created with
 <span></span>
 <span><span class="fu">attachParquetWasmDependencies</span><span class="op">(</span><span class="va">widget</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">attachGeoParquetWasmDependencies</span><span class="op">(</span><span class="va">widget</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">attachGeoParquetWasmDependencies</span><span class="op">(</span><span class="va">widget</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">attachFlatgeobufWasmDependencies</span><span class="op">(</span><span class="va">widget</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -98,6 +100,20 @@ browser. As such, <code>attachGeoParquetWasmDependencies()</code> will also atta
 <p>So, in the browser, we can use this as follows:</p>
 <p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>  <span class="fu">fetch</span>(<span class="sc">&lt;</span>geoparquet<span class="sc">-</span>url<span class="sc">&gt;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="fu">.then</span>(<span class="at">pq =</span><span class="sc">&gt;</span> <span class="fu">window.geoparquet2arrow</span>(pq))</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="fu">.then</span>(<span class="at">arrow_table =</span><span class="sc">&gt;</span> {</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>     <span class="sc">/</span><span class="er">/</span> code to work with arrow table</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    });</span></code></pre><p></p></div>
+<p>Attaching the <code>flatgeobuf-wasm</code> JavaScript dependency differs from attaching
+the other dependencies. In order to enable reading <code>.fgb</code> files in the
+browser we declare an <code>async</code> function <code>fgb2arrow</code> at the <code>window</code> level
+that can be used to read flatgeobuf data into an <code>Arrow</code> memory table in the
+browser. As such, <code>attachFlatgeobufWasmDependencies()</code> will also attach the
+<code>arrow</code> and <code>geoarrow</code> dependencies.</p>
+<p>So, in the browser, we can use this as follows:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>  <span class="fu">fetch</span>(<span class="sc">&lt;</span>flatgeobuf<span class="sc">-</span>url<span class="sc">&gt;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="fu">.then</span>(<span class="at">pq =</span><span class="sc">&gt;</span> <span class="fu">window.fgb2arrow</span>(pq))</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="fu">.then</span>(<span class="at">arrow_table =</span><span class="sc">&gt;</span> {</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>     <span class="sc">/</span><span class="er">/</span> code to work with arrow table</span>
