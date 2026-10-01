@@ -1,12 +1,13 @@
 # Changelog
 
-## geoarrowWidget 0.1.0.9013 (2026-10-01)
+## geoarrowWidget 0.1.0.9014 (2026-10-01)
 
 ##### ✨ features and improvements
 
 - add `geoaprquet-wasm` dependency, including `geoparquet2arrow` JS
   function.
 - add `flatgeobuf-wasm` dependency, including `fgb2arrow` JS function.
+- support `nanoarrow_array`.
 
 ##### 🐛 bug fixes
 
