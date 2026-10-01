@@ -4,6 +4,7 @@
 
   * add `geoaprquet-wasm` dependency, including `geoparquet2arrow` JS function.
   * add `flatgeobuf-wasm` dependency, including `fgb2arrow` JS function.
+  * support `nanoarrow_array`.
 
 #### 🐛 bug fixes
 
