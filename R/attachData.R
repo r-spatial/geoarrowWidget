@@ -97,7 +97,7 @@ attachData <- function(
 
   if (!missing(data)) {
     # for now, we only accept nanoarrow_array_stream(s)
-    stopifnot(inherits(data, "nanoarrow_array_stream"))
+    stopifnot(inherits(data, c("nanoarrow_array_stream", "nanoarrow_array")))
 
     nm = dot_lst[["name"]]
 
@@ -113,7 +113,10 @@ attachData <- function(
     )
 
     nanoarrow::write_nanoarrow(data, file)
-    data$release()
+
+    if (inherits(data, "nanoarrow_array_stream")) {
+      data$release()
+    }
 
   }
 
